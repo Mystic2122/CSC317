@@ -1,0 +1,33 @@
+#about {
+    display: flex;
+    align-items: flex-start;
+
+}
+
+
+#about-content {
+    flex: 2;
+    margin-right: 20px
+}
+
+#profile-img {
+    flex: 0.4;
+    width: 10px;
+    height: auto;
+    margin-right: 10px;
+}
+.project {
+    margin-right: 20px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: yellow;
+    color: blue;
+    border-style: solid;
+    border-width: 1px;
+}
+
+#proj-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -8,19 +8,21 @@
 </head>
 <body>
     <h1>About Me</h1>
-    <img src="images/linkedin_profile.jpg" alt="Personal photo">
-    <p>
-        Hi I'm Nick. I'm in my final year at San Francisco State University studying statistics, computer science, and economics. 
-        After I complete my degree I want to use the skills I've gained to work with data, designing databases, and making data easier to visualize and digest. 
-        In addition to statistics, I have a deep interest in algorithms. I enjoy analyzing time complexity and understanding how efficient algorithms can be applied to real-world problems.
-        Currently I'm planning on applying to graduate school for programs in statistics and data science. 
-        Achieving a masters degree in this area will give me more tools with which I manipulate and analyze data and time to become more comfortable with the tools and material I already know.
-    </p>
-    <p>
-        My dream job is to become a sports analyst. But being a Database Architect or Administrator would be pretty cool.
-        <br><br>
-        When I'm not coding or doing math, I like playing and watching sports, and I like to cook.
-    </p>
+    <div id="about">
+        <p id="about-content">
+            Hi I'm Nick. I'm in my final year at San Francisco State University studying statistics, computer science, and economics. 
+            After I complete my degree I want to use the skills I've gained to work with data, designing databases, and making data easier to visualize and digest. 
+            In addition to statistics, I have a deep interest in algorithms. I enjoy analyzing time complexity and understanding how efficient algorithms can be applied to real-world problems.
+            Currently I'm planning on applying to graduate school for programs in statistics and data science. 
+            Achieving a masters degree in this area will give me more tools with which I manipulate and analyze data and time to become more comfortable with the tools and material I already know.
+            <br><br>
+            My dream job is to become a sports analyst. But being a Database Architect or Administrator would be pretty cool.
+            <br><br>
+            When I'm not coding or doing math, I like playing and watching sports, and I like to cook.
+        </p>
+        <img id="profile-img" src="images/linkedin_profile.jpg" alt="Personal photo">
+        
+    </div>
     
     <h2>Skills</h2>
     <p>Programming Languages</p>
@@ -38,8 +40,24 @@
         <li>Markdown & LaTeX</li>
     </ul>
     <h2>Recent Projects</h2>
-        <a href="https://github.com/Mystic2122/SFHacks25">SF Hacks NBA Player Guessing Game</a>
-        <a href="https://github.com/Mystic2122/avatar">Avatar the Last Airbender Episode Quiz</a>
-        <a href="https://github.com/sfsu-joseo/csc510-group-project-sp25-DarienSngoeun">Self-Driving Car Algorithm Design</a>
-
+        <div id="proj-container">
+            <div class="project">
+                <a href="https://github.com/Mystic2122/SFHacks25">SF Hacks NBA Player Guessing Game</a>
+                <p>Displays an image of a blured NBA player and prompts user to guess. If the guess is incorrect, hints are given.</p>
+                <p>Technologies used: Flask, MongoDB</p>
+            </div>
+            <div class="project">
+                <a href="https://github.com/Mystic2122/avatar">Avatar the Last Airbender Episode Quiz</a>
+                <p>Displays a screenshot from an episode of Avatar and the user has to guess the episode with 3 levels of dificulty.</p>
+                <p>Technologies used: Express, MongoDB</p>
+            </div>
+            <div class="project">
+                <a href="https://github.com/sfsu-joseo/csc510-group-project-sp25-DarienSngoeun">Self-Driving Car Algorithm Design</a>
+                <p>Uses implimentations of dijkstra algorithm and Floyd-Warshall algorithm to compute optimal assignment of cars to customers under different cases. It has simple examples like 1 car and 1 customer and harder examples like more customers than cars and high traffic.</p>
+                <p>Technologies used: Python, GitHub</p>
+            </div>
+        </div>
+    <h2>Contact Me</h2>
+    <a href="https://github.com/Mystic2122">GitHub</a>
+    <a href="https://www.linkedin.com/in/connect-with-nicholas-wendt/">LinkedIn</a>
 </body>
