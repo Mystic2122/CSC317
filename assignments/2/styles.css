@@ -4,6 +4,10 @@
 
 }
 
+body{
+    background-color: rgb(133, 192, 157);
+}
+
 
 #about-content {
     flex: 2;
@@ -17,6 +21,7 @@
     margin-right: 10px;
 }
 .project {
+    flex: 1;
     margin-right: 20px;
     margin-bottom: 10px;
     padding: 10px;
@@ -30,4 +35,24 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+footer {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;    
+}
+
+
+#contact-div {
+    align-items: center;
+    justify-content: center;
+}
+
+.contact {
+    margin: 2rem;
+    padding: 10px;
+    background-color: black;
+    color: aquamarine;
+
 }
