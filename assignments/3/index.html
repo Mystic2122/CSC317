@@ -27,52 +27,69 @@
         
     </div>
     
+    <section id="skills">
     <h2>Skills</h2>
-    <section>
-        <p>Programming Languages</p>
-        <ul>
-            <li>Python</li>
-            <li>R</li>
-            <li>SQL</li>
-            <li>Java</li>
-        </ul>
-        <p>Tools & Technologies</p>
-        <ul>
-            <li>MySQL</li>
-            <li>MongoDB</li>
-            <li>Git & GitHub</li>
-            <li>Markdown & LaTeX</li>
-        </ul>
+        <div class="skills-content">
+            <p>Programming Languages</p>
+            <ul>
+                <li>Python</li>
+                <li>R</li>
+                <li>SQL</li>
+                <li>Java</li>
+            </ul>
+        </div>
+
+        <div class="skills-content">
+            <p>Tools & Technologies</p>
+            <ul>
+                <li>MySQL</li>
+                <li>MongoDB</li>
+                <li>Git & GitHub</li>
+                <li>Markdown & LaTeX</li>
+            </ul>
+        </div>
+        
     </section>
+
+    <section id="proj-container">
     <h2>Recent Projects</h2>
-        <section id="proj-container">
+        
             <div class="project">
                 <a href="https://github.com/Mystic2122/SFHacks25">SF Hacks NBA Player Guessing Game</a>
                 <p>Displays an image of a blured NBA player and prompts user to guess. If the guess is incorrect, hints are given.</p>
                 <p>Technologies used: Flask, MongoDB</p>
             </div>
+
             <div class="project">
                 <a href="https://github.com/Mystic2122/avatar">Avatar the Last Airbender Episode Quiz</a>
                 <p>Displays a screenshot from an episode of Avatar and the user has to guess the episode with 3 levels of dificulty.</p>
                 <p>Technologies used: Express, MongoDB</p>
             </div>
+
             <div class="project">
                 <a href="https://github.com/sfsu-joseo/csc510-group-project-sp25-DarienSngoeun">Self-Driving Car Algorithm Design</a>
                 <p>Uses implimentations of dijkstra algorithm and Floyd-Warshall algorithm to compute optimal assignment of cars to customers under different cases. It has simple examples like 1 car and 1 customer and harder examples like more customers than cars and high traffic.</p>
                 <p>Technologies used: Python, GitHub</p>
             </div>
-        </section>
+
+    </section>
+
     <footer>
-        <h2>Contact Me</h2>
+
         <div id="contact-div">
+        <h2>Contact Me</h2>
             <a class="contact" href="https://github.com/Mystic2122">GitHub</a>
             <a class="contact" href="https://www.linkedin.com/in/connect-with-nicholas-wendt/">LinkedIn</a>
         </div>
-    </footer>
-    <div id="style-buttons">
+
+        <div id="style-buttons">
+        <button onclick="switchStyle('styles/styles.css')">Handwritten CSS</button>
         <button onclick="switchStyle('styles/light.css')">Light Mode</button>
         <button onclick="switchStyle('styles/dark.css')">Dark Mode</button>
-    </div>
-    <script src="scripts/switcher.js"></script>
+        <script src="scripts/switcher.js"></script>
+        </div>
+
+    </footer>
+    
 </body>
 </html> 
