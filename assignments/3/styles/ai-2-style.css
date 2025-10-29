@@ -1,0 +1,298 @@
+/* ========== Global Styles ========== */
+body {
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #0f1621;
+    color: #e4e9f2;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+h1, h2 {
+    color: #58a6ff;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+a {
+    color: #58a6ff;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+a:hover {
+    color: #85c1ff;
+}
+
+/* ========== About Section ========== */
+#about {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 3rem 10%;
+    flex-wrap: wrap;
+}
+
+#about-content {
+    flex: 1 1 60%;
+    font-size: 1.05rem;
+    margin-right: 2rem;
+}
+
+#profile-img {
+    flex: 1 1 30%;
+    max-width: 250px;
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(88, 166, 255, 0.2);
+    transition: all 0.4s ease;
+}
+#profile-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 35px rgba(88, 166, 255, 0.6);
+}
+
+/* ========== Skills Section ========== */
+#skills {
+    padding: 2rem 10%;
+    background-color: #111a29;
+    border-top: 1px solid #1f2d3a;
+    border-bottom: 1px solid #1f2d3a;
+}
+
+#skills h2 {
+    margin-bottom: 1.5rem;
+}
+
+/* Flex layout for side-by-side skills */
+#skills .skills-wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.skills-content {
+    flex: 1 1 45%;
+    background-color: #162235;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.skills-content p {
+    font-weight: bold;
+    color: #85c1ff;
+    margin-bottom: 0.8rem;
+}
+.skills-content ul {
+    list-style-type: square;
+    padding-left: 1.5rem;
+}
+
+/* ========== Projects Section ========== */
+#proj-container {
+    padding: 3rem 10%;
+    background-color: #0f1b2b;
+}
+
+#proj-container h2 {
+    margin-bottom: 2rem;
+}
+
+/* Flex container for projects */
+#proj-container .projects-wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.project {
+    background-color: #162235;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    padding: 1.5rem;
+    flex: 1 1 calc(33.333% - 2rem);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-width: 250px;
+}
+.project:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 25px rgba(88, 166, 255, 0.4);
+}
+
+/* ========== Footer ========== */
+footer {
+    background-color: #111a29;
+    color: #b0b9c6;
+    text-align: center;
+    padding: 2rem 0;
+    border-top: 1px solid #1f2d3a;
+}
+
+#contact-div {
+    margin-bottom: 1.5rem;
+}
+.contact {
+    margin: 0 1rem;
+    font-weight: bold;
+}
+.contact:hover {
+    text-decoration: underline;
+}
+
+/* ========== Style Switcher Buttons (temporary) ========== */
+#style-buttons {
+    margin-top: 1rem;
+}
+#style-buttons button {
+    background-color: #162235;
+    color: #85c1ff;
+    border: 1px solid #1f3a5f;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    margin: 0.3rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+#style-buttons button:hover {
+    background-color: #1f3a5f;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(88, 166, 255, 0.4);
+}
+
+/* ========== Responsive Tweaks ========== */
+@media (max-width: 900px) {
+    #about {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    #about-content {
+        margin-right: 0;
+        margin-bottom: 2rem;
+    }
+
+    #skills .skills-wrapper {
+        flex-direction: column;
+    }
+
+    #proj-container .projects-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .project {
+        width: 90%;
+    }
+}
+
+/* ===== Skills Section ===== */
+#skills {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    flex-wrap: wrap; /* keeps it responsive */
+    padding: 2rem 10%;
+    background-color: #111a29;
+    border-top: 1px solid #1f2d3a;
+    border-bottom: 1px solid #1f2d3a;
+}
+
+#skills h2 {
+    width: 100%;
+    text-align: center;
+    color: #58a6ff;
+    margin-bottom: 1.5rem;
+}
+
+.skills-content {
+    flex: 1 1 45%;
+    background-color: #162235;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skills-content:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 25px rgba(88, 166, 255, 0.4);
+}
+
+.skills-content p {
+    font-weight: bold;
+    color: #85c1ff;
+    margin-bottom: 0.8rem;
+}
+
+.skills-content ul {
+    list-style-type: square;
+    padding-left: 1.5rem;
+}
+
+/* ===== Projects Section ===== */
+#proj-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    flex-wrap: wrap; /* keeps it responsive on smaller screens */
+    gap: 2rem;
+    padding: 3rem 10%;
+    background-color: #0f1b2b;
+    border-top: 1px solid #1f2d3a;
+}
+
+#proj-container h2 {
+    width: 100%;
+    text-align: center;
+    color: #58a6ff;
+    margin-bottom: 2rem;
+}
+
+/* Individual project cards */
+.project {
+    flex: 1 1 calc(33.333% - 2rem);
+    background-color: #162235;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    padding: 1.5rem;
+    min-width: 250px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 25px rgba(88, 166, 255, 0.4);
+}
+
+.project a {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #85c1ff;
+    margin-bottom: 0.8rem;
+    transition: color 0.3s ease;
+}
+.project a:hover {
+    color: #a9d3ff;
+}
+
+.project p {
+    margin-bottom: 0.5rem;
+    color: #e4e9f2;
+    font-size: 0.95rem;
+}
+
+/* ===== Responsive adjustments ===== */
+@media (max-width: 900px) {
+    #proj-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .project {
+        width: 90%;
+    }
+}
