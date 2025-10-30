@@ -189,4 +189,3 @@ footer a:hover::after {
 @media (max-width: 800px) {
   .project { display: block; margin: 20px auto; width: 90%; }
 }
-
