@@ -44,6 +44,7 @@ picture at the top and then paragraph.
 #about {
   display: flex;
   background-color: #242424;
+  border: 2px solid #303030;
   border-radius: 20px;
   margin: 15px auto;
   width: 85%;
@@ -59,7 +60,7 @@ picture at the top and then paragraph.
 #about-content{
   border-radius: 20px;
 
-  border: 1px solid #303030;
+  border: 2px solid #303030;
   background-color: #1e1e1e;
   width: 60%;
 
@@ -97,6 +98,7 @@ it easier to know what skill your looking at.
 #skills{
   display: flex;
   background-color: #242424;
+  border: 2px solid #303030;
   margin: 25px auto;
   
   justify-content: flex-start;
@@ -159,6 +161,7 @@ the skills.
 #proj-container {
   display: flex;
   background-color: #242424;
+  border: 2px solid #303030;
   border-radius: 20px;
 
   margin: 20px auto;
