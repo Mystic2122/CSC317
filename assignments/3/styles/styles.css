@@ -16,6 +16,19 @@ h1 {
   font-size: 45px;
 }
 
+h2 {
+  display: flex;
+  background-color: #303030;
+  margin: 20px auto;
+  padding: 20px;
+  
+  align-items: center;
+  justify-content: center;
+  flex-basis: auto;
+  flex-grow: auto;
+  flex-wrap: wrap;
+}
+
 /*
 Approaching the About Me section I wanted to make it so that the Picture
 would be at the top and as we hover over the picture it would increase in size
@@ -31,6 +44,7 @@ picture at the top and then paragraph.
 #about {
   display: flex;
   background-color: #242424;
+  border: 2px solid #303030;
   border-radius: 20px;
   margin: 15px auto;
   width: 85%;
@@ -46,7 +60,7 @@ picture at the top and then paragraph.
 #about-content{
   border-radius: 20px;
 
-  border: 1px solid #303030;
+  border: 2px solid #303030;
   background-color: #1e1e1e;
   width: 60%;
 
@@ -84,6 +98,7 @@ it easier to know what skill your looking at.
 #skills{
   display: flex;
   background-color: #242424;
+  border: 2px solid #303030;
   margin: 25px auto;
   
   justify-content: flex-start;
@@ -93,15 +108,6 @@ it easier to know what skill your looking at.
   flex-direction: row;
 
 
-}
-
-#skills h2 {
-  padding: 20px;
-  margin: 20px;
-
-  justify-content: left;
-  flex-grow: auto;
-  font-size: 30px;
 }
 
 .skills-content{
@@ -155,6 +161,7 @@ the skills.
 #proj-container {
   display: flex;
   background-color: #242424;
+  border: 2px solid #303030;
   border-radius: 20px;
 
   margin: 20px auto;
@@ -170,12 +177,6 @@ the skills.
 
   align-items: center;
   justify-content: center;
-}
-
-#proj-container h2 {
-  text-align: center;
-  flex-grow: auto;
-  font-size: 30px;
 }
 
 #proj-container a {
@@ -232,17 +233,29 @@ footer{
   flex-direction: column;
 }
 
+#contact-div h2 {
+  color: white;
+  background-color: #242424;
+  padding: 10px;
+  margin: 10px;
+}
+
 #contact-div a{
-  flex-basis: auto;
-  flex-grow: auto;
-  flex-wrap: wrap;
+  background-color: #1e1e1e;
+  border: 1px solid #303030;
+  color: white;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 20px;
 
-  justify-content: center;
-  text-align: center;
-  flex-grow: auto;
+  transition: 
+  background-color 0.6s ease,
+  box-shadow 0.4s linear;
+}
 
-  font-size: 20px;
-  color: #1c71d8;
+#contact-div a:hover{
+  background-color: rgb(50,50,50);
+  box-shadow: 0 15px 25px rgba(0,0,0,0.3);
 }
 
 #style-buttons{
@@ -259,12 +272,10 @@ footer{
 
   transition: 
   background-color 0.6s ease,
-  transform 0.4s ease-out,
   box-shadow 0.4s linear;
 }
 
 #style-buttons button:hover{
   background-color: rgb(50,50,50);
-  transform: translateY(-10px);
   box-shadow: 0 15px 25px rgba(0,0,0,0.3);
 }
