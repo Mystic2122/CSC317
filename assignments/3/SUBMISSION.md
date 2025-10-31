@@ -19,6 +19,10 @@ trying to not mess with the main index.html unless it involved adding classes to
 the CSS Style. I had also approached it with the idea that we should use a dark theme.
 
 **Quynh's Approach:** 
+For my version of the portfolio, I wanted to build on our class examples by keeping the layout simple, readable, and easy to navigate.
+I worked on organizing the HTML so that each section — About, Skills, Projects, and Contact was clearly separated and consistent with the class structure. 
+My goal was to make the page look clean and professional while still matching the format we agreed on.
+
 
 **Nicholas's Approach:** 
 
@@ -33,6 +37,11 @@ Throughout it helped show me the importance of classes and ids as it had made it
 
 ### [Member 3 Name] - AI Text Prompt CSS
 [Individual reflection on AI prompting experience and lessons learned]
+I worked with the third AI CSS prompt (ai-3-style.css) that focused on a clean, modern design. The AI did a good job setting up the base style, especially with spacing and color choices, but I still had to adjust things like text size, alignment, and contrast to make it look right.
+
+Using the AI prompt was actually really helpful. 
+It gave me a good starting point and some ideas I wouldn’t have thought of right away. But it also made me realize that AI can’t fully replace the creative part of web design. You still have to understand what looks good and make adjustments by hand.
+Overall, I liked working with the AI version because it saved time and helped me practice editing and improving automatically generated code.
 
 ### [Member 4 Name] - AI Image+Text Prompt CSS (if applicable)
 [Individual reflection on AI prompting with images and lessons learned]
