@@ -20,7 +20,8 @@ the CSS Style. I had also approached it with the idea that we should use a dark 
 
 **Quynh's Approach:** 
 
-**Nicholas's Approach:** 
+**Nicholas' Approach:** 
+I needed to figure out how to implement the switcher.js file because I've never worked with JavaScript before. It was actually simpler than I thought, just getting all the style sheets from the styles/ directory was a little confusing at first. For the AI 2 style I wanted a darker theme with some cool hover animations. For the hybrid.css I just took the sections from each style sheet that I liked the most and thought fit well together. For example, I liked the link style for the github and LinkedIn links at the bottom of the page from AI-style-3.
 
 ## Individual Reflections
 
