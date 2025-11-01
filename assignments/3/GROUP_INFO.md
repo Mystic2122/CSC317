@@ -5,9 +5,8 @@
 -[Quynh Dinh] - [924483505] - [QuynhDinhHP] - **AI Text Prompt CSS 1 + Documentation**
 -[Nicholas Wendt]- [923609710] - [Mystic2122] - **AI Text Prompt CSS 2 + Switcher Implementation**
 
-**Elected Submitter:** [Name and GitHub username of person submitting]
+**Elected Submitter:** [Name: Nicholas Wendt | GitHub:Mystic2122]
 **Repository Link:** https://github.com/Mystic2122/CSC317/tree/main/assignments/3
-
 
 # Work Distribution 
 - Hand- written CSS: [Daniel Jose Dacumos] 
