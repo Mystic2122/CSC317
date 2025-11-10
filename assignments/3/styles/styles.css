@@ -1,0 +1,282 @@
+/*
+Approaching the Color Pallette it follows the color scheme used in Libadwaita
+*/
+body {
+  background-color: #1e1e1e;
+  font-family: 'Inter', sans-serif;
+  color: white;
+  padding: 0px;
+  margin: 0px;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  flex-grow: auto;
+  font-size: 45px;
+}
+
+h2 {
+  display: flex;
+  background-color: #303030;
+  margin: 20px auto;
+  padding: 20px;
+  
+  align-items: center;
+  justify-content: center;
+  flex-basis: auto;
+  flex-grow: auto;
+  flex-wrap: wrap;
+}
+
+/*
+Approaching the About Me section I wanted to make it so that the Picture
+would be at the top and as we hover over the picture it would increase in size
+
+Then I wanted the paragraph to be at the bottom, in order to emphasize the
+picture before reading on who they are as they read from top to bottom.
+
+However, in the html code it's setup as the paragraph then photograph, but
+with Flex Boxes we can change the direction using flex-direction column reverse
+to not just set it as a column, but to start from bottom to top. Which would be
+picture at the top and then paragraph.
+*/
+#about {
+  display: flex;
+  background-color: #242424;
+  border: 2px solid #303030;
+  border-radius: 20px;
+  margin: 15px auto;
+  width: 85%;
+  
+  align-items: center;
+  justify-content: center;
+  flex-basis: auto;
+  flex-grow: auto;
+  flex-wrap: wrap;
+  flex-direction: column-reverse;
+}
+
+#about-content{
+  border-radius: 20px;
+
+  border: 2px solid #303030;
+  background-color: #1e1e1e;
+  width: 60%;
+
+  padding: 20px;
+  margin: 20px;  
+
+  font-size: 18px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+#profile-img{
+  border: 1px solid #303030;
+  border-radius: 50%;
+  width: 10%;
+  margin: 15px;
+  transition: all 0.5s ease-in-out;
+}
+
+#profile-img:hover{
+  width: 20%;
+}
+
+/*
+Approaching the Skills Section it's using rows as it's Flex Direction
+as in case we gain a bigger variety of skills that it would be easier to add
+them alongside without making the page longer vertically.
+
+However, we also wanted to allow the user to more clearly see which skillset
+they are looking at. As a result, we also added animations for when you
+hover over each of the skills which highlights it and brings it up. This makes
+it easier to know what skill your looking at.
+*/
+#skills{
+  display: flex;
+  background-color: #242424;
+  border: 2px solid #303030;
+  margin: 25px auto;
+  
+  justify-content: flex-start;
+  flex-basis: auto;
+  flex-grow: auto;
+  flex-wrap: wrap;
+  flex-direction: row;
+
+
+}
+
+.skills-content{
+  border: 1px solid #303030;
+  background-color: #1e1e1e;
+
+  padding: 20px;
+  margin: 20px;
+
+  border-radius: 20px;
+
+  font-size: 20px;
+  text-align: center;
+
+  line-height: 1.5;
+
+  transition: 
+    background-color 0.6s ease,
+    transform 0.4s ease-out,
+    box-shadow 0.4s linear;
+}
+
+.skills-content p{
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.skills-content:hover{
+  background-color: rgb(50,50,50);
+  transform: translateY(-10px);
+  box-shadow: 0 15px 25px rgba(0,0,0,0.3);
+}
+
+.skills-content ul{
+  list-style-type: none;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+/*
+Approaching the Project Section it is very similar to how we did the rows, but
+instead we decided for it to be a Column as it's more important to emphasize
+the projects that the person has done, so it's okay if it increases the vertical
+length.
+
+Nevertheless, we reused the same animations from the skills, as well as 
+highlighting the projects that the user is looking at for the same reason as
+the skills.
+*/
+#proj-container {
+  display: flex;
+  background-color: #242424;
+  border: 2px solid #303030;
+  border-radius: 20px;
+
+  margin: 20px auto;
+  padding: 20px;
+  width: 75%;
+  
+  
+  flex-direction: column;
+  flex-basis: auto;
+  flex-grow: auto;
+  flex-wrap: wrap;
+  
+
+  align-items: center;
+  justify-content: center;
+}
+
+#proj-container a {
+  text-align: center;
+  flex-grow: auto;
+
+  font-size: 20px;
+  color: #1c71d8;
+}
+
+.project{
+  border: 1px solid #303030;
+  background-color: #1e1e1e;
+
+  padding: 20px;
+  margin: 20px;
+
+  border-radius: 20px;
+  width: 75%;
+
+  font-size: 15px;
+
+  transition: 
+    background-color 0.6s ease,
+    transform 0.4s ease-out,
+    box-shadow 0.4s linear;
+}
+
+.project:hover{
+  background-color: rgb(50,50,50);
+  transform: translateY(-10px);
+  box-shadow: 0 15px 25px rgba(0,0,0,0.3);
+}
+
+/*
+Approaching the Footer Section we wanted to make a simple box that
+stores it vertically using columns and provided an easy way to access
+the Contact Me Links as well as changing the style.
+*/
+footer{
+  display: flex;
+  background-color: #242424;
+  border-radius: 20px;
+
+  margin: 10px auto;
+  padding: 20px;
+  width: 20%;
+
+  flex-basis: auto;
+  flex-grow: auto;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#contact-div h2 {
+  color: white;
+  background-color: #242424;
+  padding: 10px;
+  margin: 10px;
+}
+
+#contact-div a{
+  background-color: #1e1e1e;
+  border: 1px solid #303030;
+  color: white;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 20px;
+
+  transition: 
+  background-color 0.6s ease,
+  box-shadow 0.4s linear;
+}
+
+#contact-div a:hover{
+  background-color: rgb(50,50,50);
+  box-shadow: 0 15px 25px rgba(0,0,0,0.3);
+}
+
+#style-buttons{
+  padding: 10px;
+  margin: 15px;
+  flex-grow: auto;
+}
+
+#style-buttons button {
+  background-color: #1e1e1e;
+  border: 1px solid #303030;
+  color: white;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 20px;
+
+  transition: 
+  background-color 0.6s ease,
+  box-shadow 0.4s linear;
+}
+
+#style-buttons button:hover{
+  background-color: rgb(50,50,50);
+  box-shadow: 0 15px 25px rgba(0,0,0,0.3);
+}

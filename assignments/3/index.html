@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=divice-width, initial-scale=1.0">
     <meta name="author" content="Nick">
 
-    <link rel="stylesheet" href="styles.css">
+    <link id="pagestyle" rel="stylesheet" href="styles/light.css">
+
 </head>
 <body>
     <h1>About Me</h1>
@@ -25,47 +26,74 @@
         <img id="profile-img" src="images/linkedin_profile.jpg" alt="Personal photo">
         
     </div>
-    
+
     <h2>Skills</h2>
-    <p>Programming Languages</p>
-    <ul>
-        <li>Python</li>
-        <li>R</li>
-        <li>SQL</li>
-        <li>Java</li>
-    </ul>
-    <p>Tools & Technologies</p>
-    <ul>
-        <li>MySQL</li>
-        <li>MongoDB</li>
-        <li>Git & GitHub</li>
-        <li>Markdown & LaTeX</li>
-    </ul>
+    <section id="skills">
+
+        <div class="skills-content">
+            <p>Programming Languages</p>
+            <ul>
+                <li>Python</li>
+                <li>R</li>
+                <li>SQL</li>
+                <li>Java</li>
+            </ul>
+        </div>
+
+        <div class="skills-content">
+            <p>Tools & Technologies</p>
+            <ul>
+                <li>MySQL</li>
+                <li>MongoDB</li>
+                <li>Git & GitHub</li>
+                <li>Markdown & LaTeX</li>
+            </ul>
+        </div>
+        
+    </section>
+
     <h2>Recent Projects</h2>
-        <div id="proj-container">
+    <section id="proj-container">
+
+        
             <div class="project">
                 <a href="https://github.com/Mystic2122/SFHacks25">SF Hacks NBA Player Guessing Game</a>
                 <p>Displays an image of a blured NBA player and prompts user to guess. If the guess is incorrect, hints are given.</p>
                 <p>Technologies used: Flask, MongoDB</p>
             </div>
+
             <div class="project">
                 <a href="https://github.com/Mystic2122/avatar">Avatar the Last Airbender Episode Quiz</a>
                 <p>Displays a screenshot from an episode of Avatar and the user has to guess the episode with 3 levels of dificulty.</p>
                 <p>Technologies used: Express, MongoDB</p>
             </div>
+
             <div class="project">
-                <a href="https://github.com/sfsu-joseo/csc510-group-project-sp25-DarienSngoeun">Self-Driving Car Algorithm Design</a>
+                <a href="https://github.com/Mystic2122/self_driving_algorithm_optimization">Self-Driving Car Algorithm Design</a>
                 <p>Uses implimentations of dijkstra algorithm and Floyd-Warshall algorithm to compute optimal assignment of cars to customers under different cases. It has simple examples like 1 car and 1 customer and harder examples like more customers than cars and high traffic.</p>
                 <p>Technologies used: Python, GitHub</p>
             </div>
-        </div>
-    <hr>
+
+    </section>
+
     <footer>
-        <h2>Contact Me</h2>
+
         <div id="contact-div">
+        <h2>Contact Me</h2>
             <a class="contact" href="https://github.com/Mystic2122">GitHub</a>
             <a class="contact" href="https://www.linkedin.com/in/connect-with-nicholas-wendt/">LinkedIn</a>
         </div>
+
+        <div id="style-buttons">
+        <button onclick="switchStyle('styles/styles.css')">Handwritten CSS</button>
+        <button onclick="switchStyle('styles/ai-1.css')">Ai Prompt 1</button>
+        <button onclick="switchStyle('styles/ai-2.css')">Ai Prompt 2</button>
+        <button onclick="switchStyle('styles/ai-3.css')">Ai Prompt 3</button>
+        <button onclick="switchStyle('styles/hybrid.css')">Hybrid CSS</button>
+        <script src="scripts/switcher.js"></script>
+        </div>
+
     </footer>
+    
 </body>
 </html> 
