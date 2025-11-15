@@ -1,0 +1,269 @@
+/* Body style from AI-2 and AI-3 for the links */
+:root {
+  --bg: radial-gradient(ellipse at top left,#0b0b1a,#1c1032 40%,#050510 100%);
+  --glass: rgba(255,255,255,0.05);
+  --border: rgba(255,255,255,0.08);
+  --main: #e8ecf3;
+  --sub: #c5c9d6;
+  --accent: #4cc9f0;
+  --accent-soft: #4361ee;
+  --accent-blue: #7ad7f0;   /* for h1 + primary elements */
+  --accent-purple: #a78bfa; /* for h2 + section headers */
+  --accent2: #a6b1ff;
+  --highlight: #3a86ff;
+  --glow: #1c3443;
+  --radius: 16px;
+  --shadow: 0 0 25px rgba(122,215,240,0.15);
+  --shadow-soft: 0 0 25px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 10px rgba(76, 201, 240, 0.3);
+  --transition: .4s ease;
+}
+
+body {
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #0f1621;
+    color: #e4e9f2;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+h1, h2 {
+    color: #58a6ff;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+/* About section from AI-2 */
+
+#about {
+    display: flex;
+    background-color: #131c2b;
+    justify-content: space-between;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    align-items: flex-start;
+    padding: 3rem 10%;
+    flex-wrap: wrap;
+}
+
+#about-content {
+    flex: 1 1 60%;
+    font-size: 1.05rem;
+    margin-right: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    margin: 20px;
+}
+
+#profile-img {
+    flex: 1 1 30%;
+    max-width: 250px;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(88, 166, 255, 0.2);
+    transition: all 0.4s ease;
+}
+#profile-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 35px rgba(88, 166, 255, 0.6);
+}
+
+/* Skills section from AI-1 with modifications */
+#skills {
+  text-align: center;
+  padding: 20px 10%;
+  background-color: var(--bg-dark);
+}
+
+#skills h2 {
+  font-size: 2rem;
+  color: var(--accent-soft);
+  margin-bottom: 100px;
+  text-shadow: 0 0 8px rgba(76, 201, 240, 0.2);
+  animation: fadeInUp 1s ease;
+}
+
+.skills-content {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #131c2b;
+  border: 1px solid #18202f;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  padding: 20px; 
+  margin: 10px auto;
+  width: 50%;
+
+  border-radius: 25px;;
+  justify-content: center;
+  margin-bottom: 20px;
+  animation: fadeInUp 1.2s ease;
+}
+
+.skills-content p {
+  width: 100%;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin-bottom: 25px;
+}
+
+.skills-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.skills-content ul li {
+  border: 1px solid #18202f;
+  background: var(--bg-card);
+  padding: 12px 20px;
+  border-radius: 30px;
+  color: var(--text-primary);
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skills-content ul li:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 0 35px var(--glow);
+  background: linear-gradient(145deg, rgba(108,217,255,0.08), rgba(44, 63, 122, 0.08));
+}
+
+/* Project Section from Handwritten CSS width modifications*/
+
+#proj-container {
+  display: flex;
+  background-color: #131c2b;
+  
+  border-radius: 20px;
+
+  margin: 20px auto;
+  padding: 20px;
+  width: 75%;
+  
+  
+  flex-direction: column;
+  flex-basis: auto;
+  flex-grow: auto;
+  flex-wrap: wrap;
+  
+
+  align-items: center;
+  justify-content: center;
+}
+
+#proj-container h2 {
+  text-align: center;
+  flex-grow: auto;
+  font-size: 30px;
+}
+
+.project a {
+  color: var(--accent-purple);
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 1.05rem;
+  transition: var(--transition);
+}
+
+.project{
+  border: 1px solid #18202f;
+
+
+  padding: 20px;
+  margin: 20px;
+
+  border-radius: 20px;
+  width: 75%;
+
+  font-size: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project a:hover {
+  color: var(--accent-blue);
+  text-shadow: 0 0 10px rgba(28, 38, 67, 0.6);
+}
+
+
+.project:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 0 35px var(--glow);
+  background: linear-gradient(145deg, rgba(108,217,255,0.08), rgba(44, 63, 122, 0.08));
+}
+
+
+
+/* Footer styles from AI-3 */
+footer {
+  background: rgba(15,15,30,0.9);
+  color: var(--sub);
+  text-align: center;
+  padding: 1.5em 0;
+  margin-top: 50px;
+  box-shadow: 0 -5px 20px rgba(108,217,255,0.1);
+}
+footer a {
+  color: var(--accent-blue);
+  margin: 0 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition);
+  position: relative;
+  display: inline-block;
+}
+footer a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+  transform: scaleX(0);
+  transition: transform .4s ease;
+  transform-origin: right;
+}
+footer a:hover {
+  color: #93e2ff;
+  text-shadow: 0 0 12px var(--glow);
+}
+footer a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Switcher buttons fro AI-1 */
+#style-buttons {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  display: flex;
+  gap: 10px;
+}
+
+#style-buttons button {
+  background: var(--bg-card);
+  border: none;
+  color: var(--text-primary);
+  padding: 10px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: var(--shadow-soft);
+  transition: all var(--transition-speed);
+}
+
+#style-buttons button:hover {
+  background: var(--accent);
+  color: #000;
+  transform: scale(1.05);
+  box-shadow: var(--shadow-glow);
+}
