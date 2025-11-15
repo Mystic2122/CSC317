@@ -132,6 +132,7 @@ h1, h2 {
   transform: translateY(-10px) scale(1.03);
   box-shadow: 0 0 35px var(--glow);
   background: linear-gradient(145deg, rgba(108,217,255,0.08), rgba(44, 63, 122, 0.08));
+  cursor: default;
 }
 
 /* Project Section from Handwritten CSS width modifications*/
