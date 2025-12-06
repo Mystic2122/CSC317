@@ -7,12 +7,12 @@
     
     <% if (isAuthenticated) { %>
       <div class="action-buttons">
-        <a href="/user/profile" class="btn primary-btn">View Profile</a>
+        <a href="./user/profile.ejs" class="btn primary-btn">View Profile</a>
       </div>
     <% } else { %>
       <div class="action-buttons">
-        <a href="/auth/login" class="btn primary-btn">Login</a>
-        <a href="/auth/register" class="btn secondary-btn">Register</a>
+        <a href="./auth/login.ejs" class="btn primary-btn">Login</a>
+        <a href="./auth/register.ejs" class="btn secondary-btn">Register</a>
       </div>
     <% } %>
   </div>

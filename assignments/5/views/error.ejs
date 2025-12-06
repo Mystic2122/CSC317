@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= title %> | Authentication Template</title>
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/public/css/style.css">
 </head>
 <body>
   <header>
@@ -17,12 +17,12 @@
         <li><a href="/about" class="<%= path === '/about' ? 'active' : '' %>">About</a></li>
         
         <% if (isAuthenticated) { %>
-          <li><a href="/user/profile">Profile</a></li>
-          <li><a href="/user/settings">Settings</a></li>
-          <li><a href="/auth/logout">Logout</a></li>
+          <li><a href="./user/profile.ejs">Profile</a></li>
+          <li><a href="./user/settings.ejs">Settings</a></li>
+          <li><a href="./auth/logout">Logout</a></li>
         <% } else { %>
-          <li><a href="/auth/login">Login</a></li>
-          <li><a href="/auth/register">Register</a></li>
+          <li><a href="./auth/login.ejs">Login</a></li>
+          <li><a href="./auth/register.ejs">Register</a></li>
         <% } %>
       </ul>
     </nav>

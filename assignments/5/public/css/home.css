@@ -33,6 +33,67 @@ body {
   flex-direction: column;
 }
 
+#featured {
+    padding: 100px;
+    background: linear-gradient(160deg, #1e1e1e, #2e2e2e);
+    background-color: var(--background-color);
+    box-shadow: var(--shadow);
+}
+
+h1 {
+    margin: 10px;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 20px;
+}
+
+#movieContainer {
+    padding: 10px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+#movieBox {
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    
+    margin: 10px;
+    border-radius: 21px;
+    background: linear-gradient(160deg, rgb(119, 0, 0), #3d0000);
+    width: 200px;
+    height: 300px;
+    overflow: hidden;
+
+    box-shadow: var(--shadow);
+    transition: all 0.4s ease;
+}
+
+#movieBox h1, #movieBox p {
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    
+    margin: 10px;
+    width: 200px;
+    height: 300px;
+}
+
+#movieBox:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 1);
+}
+
+/*
+From Template
+*/
+
+
+
+
 a {
   color: var(--primary-color);
   text-decoration: none;
@@ -40,15 +101,6 @@ a {
 
 a:hover {
   text-decoration: underline;
-}
-
-/* 
- * Layout Components 
- */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
 }
 
 main {
@@ -61,6 +113,7 @@ main {
 header {
   background-color: var(--background-color);
   box-shadow: var(--shadow);
+  border: var(--border-color);
 }
 
 .navbar {
