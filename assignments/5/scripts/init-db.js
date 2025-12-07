@@ -63,6 +63,30 @@ const createTables = async () => {
     `);
     console.log('✓ Indexes created');
 
+    // TABLES FOR PROJECT
+    // Movie Table
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS movie(
+        id SERIAL PRIMARY KEY,
+        title VARCHAR(63) NOT NULL,
+        year INT,
+        rating VARCHAR(8),
+        genre VARCHAR(127),
+        image VARCHAR(255)
+      )
+    `); // Maybe add: director VARCHAR(127), language VARCHAR(31), rotten_tomatoes int
+    
+    // Many-to-many users to movies association table
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS review(
+        user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+        movie_id INT NOT NULLL REFERENCES movie(id) ON DELETE CASCADE,
+        review TEXT
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        PRIMARY KEY (user_id, movie_id)
+      )
+    `);
+
     console.log('\n✅ Database initialization complete!');
   } catch (error) {
     console.error('Error initializing database:', error);
