@@ -72,7 +72,7 @@ const createTables = async () => {
         year INT,
         rating VARCHAR(7),
         genre VARCHAR(127),
-        plot VARCHAR(),
+        plot TEXT,
         image VARCHAR(255)
       )
     `); // Maybe add: director VARCHAR(127), language VARCHAR(31), rotten_tomatoes int
@@ -81,8 +81,8 @@ const createTables = async () => {
     await pool.query(`
       CREATE TABLE IF NOT EXISTS reviews(
         user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-        movie_id INT NOT NULLL REFERENCES movie(id) ON DELETE CASCADE,
-        review VARCHAR() NOT NULL,
+        movie_id INT NOT NULL REFERENCES movies(id) ON DELETE CASCADE,
+        review TEXT NOT NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         PRIMARY KEY (user_id, movie_id)
       )

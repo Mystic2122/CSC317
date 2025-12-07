@@ -47,7 +47,7 @@ const findMovieByTitle = async (title) => {
     }
 
     console.log("Fetching movie from external API");
-    const API_KEY = process.env.API_KEY;
+    const API_KEY = process.env.MOVIE_API_KEY;
 
     
 
@@ -59,6 +59,12 @@ const findMovieByTitle = async (title) => {
     
     const url = `http://www.omdbapi.com/?apikey=${API_KEY}&t=${title}`
     const newMovie = await APIgetMovie(url);
+    console.log("OMDb response:", newMovie);
+
+    if (!newMovie || newMovie.Response === "False") {
+        console.error("OMDb error:", newMovie && newMovie.Error);
+        throw new Error("Failed to fetch movie from OMDb");
+    }
     
     const newTitle = newMovie['Title']
     let yearVal = parseInt(newMovie["Year"]);
