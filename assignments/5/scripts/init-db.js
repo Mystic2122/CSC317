@@ -66,22 +66,23 @@ const createTables = async () => {
     // TABLES FOR PROJECT
     // Movie Table
     await pool.query(`
-      CREATE TABLE IF NOT EXISTS movie(
+      CREATE TABLE IF NOT EXISTS movies(
         id SERIAL PRIMARY KEY,
         title VARCHAR(63) NOT NULL,
         year INT,
-        rating VARCHAR(8),
+        rating VARCHAR(7),
         genre VARCHAR(127),
+        plot VARCHAR(),
         image VARCHAR(255)
       )
     `); // Maybe add: director VARCHAR(127), language VARCHAR(31), rotten_tomatoes int
     
     // Many-to-many users to movies association table
     await pool.query(`
-      CREATE TABLE IF NOT EXISTS review(
+      CREATE TABLE IF NOT EXISTS reviews(
         user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
         movie_id INT NOT NULLL REFERENCES movie(id) ON DELETE CASCADE,
-        review TEXT
+        review VARCHAR() NOT NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         PRIMARY KEY (user_id, movie_id)
       )
