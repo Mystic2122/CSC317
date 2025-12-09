@@ -12,14 +12,41 @@ const { query } = require('../config/database');
  * @returns {Promise<Object>} Created/updated image object
  */
 
-const insert = async(userId, movieId, review) => {
+const upsert = async(userId, movieId, review) => {
     const result = await query(
         `INSERT INTO reviews (user_id, movie_id, review)
         VALUES ($1, $2, $3)
+        ON CONFLICT (user_id, movie_id)
+        DO UPDATE SET review = EXCLUDED.review, edited = TRUE
         RETURNING *`,
         [userId, movieId, review]
     );
     return result.rows[0]
 };
 
-const getReviewsById = async()
+const getReviewsByUser = async(userId) => {
+    const result = await query(
+        `SELECT movie_id, review
+        FROM reviews
+        WHERE user_id = $1`,
+        [userId]
+    );
+    return result.rows 
+};
+
+const getReviewsByMovie = async(movieId) => {
+    const result = await query(
+        `SELECT user_id, review
+        FROM reviews
+        WHERE movie_id = $1`,
+        [movieId]
+    );
+    return result.rows
+};
+
+
+module.exports = {
+    upsert,
+    getReviewsByUser,
+    getReviewsByMovie
+};
