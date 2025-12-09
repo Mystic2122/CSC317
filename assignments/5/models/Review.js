@@ -11,3 +11,15 @@ const { query } = require('../config/database');
  * @param {string} contentType - MIME type of the image
  * @returns {Promise<Object>} Created/updated image object
  */
+
+const insert = async(userId, movieId, review) => {
+    const result = await query(
+        `INSERT INTO reviews (user_id, movie_id, review)
+        VALUES ($1, $2, $3)
+        RETURNING *`,
+        [userId, movieId, review]
+    );
+    return result.rows[0]
+};
+
+const getReviewsById = async()

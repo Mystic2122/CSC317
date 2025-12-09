@@ -84,6 +84,7 @@ const createTables = async () => {
         movie_id INT NOT NULL REFERENCES movies(id) ON DELETE CASCADE,
         review TEXT NOT NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        edited BOOLEAN DEFAULT FALSE,
         PRIMARY KEY (user_id, movie_id)
       )
     `);
