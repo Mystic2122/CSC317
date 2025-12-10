@@ -60,6 +60,9 @@ const loginValidation = [
     .withMessage('Please enter a valid email address')
     .normalizeEmail(),
   body('password')
+    .trim()
+    .isLength({ min: 8 })
+    .withMessage('Password must be at least 8 characters long')
     .notEmpty()
     .withMessage('Password is required')
 ];
