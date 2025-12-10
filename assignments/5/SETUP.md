@@ -17,35 +17,96 @@ Node.js is the JavaScript runtime that powers the server-side of this applicatio
 
 ### For Windows:
 
-1. Download the installer from [Node.js official website](https://nodejs.org/)
-2. Choose the LTS (Long Term Support) version
-3. Run the installer and follow the installation wizard
-4. Verify installation by opening Command Prompt and typing:
-   ```
-   node --version
-   npm --version
-   ```
+#### Option 1: Using Installer (Easiest)
+
+1. Go to [Node.js official website](https://nodejs.org/)
+2. Download the **LTS (Long Term Support)** version (recommended for stability)
+3. Run the downloaded `.msi` installer
+4. Follow the installation wizard:
+   - Accept the license agreement
+   - Choose installation location (default is fine)
+   - Keep "npm package manager" checked
+   - Click "Install"
+5. Restart your computer after installation
+
+#### Option 2: Using Chocolatey (Advanced)
+
+If you have Chocolatey installed:
+```powershell
+choco install nodejs
+```
+
+#### Verify Installation
+
+Open **Command Prompt** or **PowerShell** and type:
+```cmd
+node --version
+npm --version
+```
+
+You should see version numbers displayed (e.g., v20.10.0 and 10.2.3).
+
+---
 
 ### For macOS:
 
-Option 1: Using Homebrew (recommended):
-```
-brew install node
+#### Option 1: Using Homebrew (Recommended)
+
+Homebrew is a package manager for macOS that makes installation easier.
+
+**Step 1: Install Homebrew** (if not already installed)
+
+Open **Terminal** and run:
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-Option 2: Using the installer:
-1. Download the installer from [Node.js official website](https://nodejs.org/)
-2. Choose the LTS version
-3. Run the installer and follow the instructions
-4. Verify installation in Terminal:
+Follow the on-screen instructions.
+
+**Step 2: Install Node.js**
+
+```bash
+brew install node@20
+```
+
+**Step 3: Verify Installation**
+
+```bash
+node --version
+npm --version
+```
+
+#### Option 2: Using Installer
+
+1. Go to [Node.js official website](https://nodejs.org/)
+2. Download the **LTS (Long Term Support)** version for macOS
+3. Run the `.pkg` installer
+4. Follow the installation wizard
+5. Restart Terminal or run:
+   ```bash
+   source ~/.zprofile
    ```
-   node --version
-   npm --version
-   ```
+
+**Step 3: Verify Installation**
+
+Open **Terminal** and type:
+```bash
+node --version
+npm --version
+```
+
+#### Option 3: Using MacPorts (Alternative)
+
+If you have MacPorts installed:
+```bash
+sudo port install nodejs20 +universal
+```
+
+---
 
 ### For Linux (Ubuntu/Debian):
 
-```
+```bash
 sudo apt update
 sudo apt install nodejs npm
 node --version
@@ -58,120 +119,359 @@ PostgreSQL is the database used by this application to store user information.
 
 ### For Windows:
 
-1. Download the installer from [PostgreSQL Downloads](https://www.postgresql.org/download/windows/)
-2. Run the installer and follow the installation wizard
-3. Remember the password you set for the `postgres` superuser
-4. Ensure the installer adds PostgreSQL to your PATH
-5. Verify installation:
-   ```
-   psql --version
-   ```
+#### Option 1: Using Installer (Recommended)
+
+1. Go to [PostgreSQL Downloads for Windows](https://www.postgresql.org/download/windows/)
+2. Click on the **Latest version** link (currently PostgreSQL 16/17)
+3. Download the installer executable
+4. Run the installer and follow the wizard:
+   - Accept the license
+   - Choose installation directory (default: `C:\Program Files\PostgreSQL`)
+   - Select components to install:
+     - ✓ PostgreSQL Server
+     - ✓ pgAdmin 4 (GUI tool for managing databases)
+     - ✓ Stack Builder (for additional tools)
+     - ✓ Command Line Tools
+   - Choose the data directory (default is fine)
+   - **Important:** Set a strong password for the `postgres` superuser - write it down!
+   - Port: Keep as 5432 (default)
+   - Locale: Select your region
+5. Click "Next" and let it install
+6. Uncheck "Launch Stack Builder" at the end (optional)
+
+#### Option 2: Using Chocolatey (Advanced)
+
+If you have Chocolatey installed:
+```powershell
+choco install postgresql
+```
+
+#### Verify Installation
+
+Open **Command Prompt** and type:
+```cmd
+psql --version
+```
+
+You should see: `psql (PostgreSQL) 16.x` or similar.
+
+#### Add PostgreSQL to PATH (if needed)
+
+1. Open System Properties:
+   - Press `Win + X`, select "System"
+   - Click "Advanced system settings"
+   - Click "Environment Variables"
+2. Under "System variables", find `Path` and click "Edit"
+3. Click "New" and add: `C:\Program Files\PostgreSQL\16\bin`
+4. Click OK and restart Command Prompt
+
+#### Create Database
+
+Open **Command Prompt** (or **pgAdmin 4**) and run:
+```cmd
+psql -U postgres
+```
+
+Enter your postgres password when prompted, then:
+```sql
+CREATE DATABASE csc317_project;
+\q
+```
+
+---
 
 ### For macOS:
 
-Option 1: Using Homebrew (recommended):
+#### Option 1: Using Homebrew (Recommended)
+
+Open **Terminal** and run:
+
 ```bash
+# Install PostgreSQL
 brew install postgresql@17
+
+# Start PostgreSQL service
 brew services start postgresql@17
-```
 
-Option 2: Using Postgres.app:
-1. Download from [Postgres.app](https://postgresapp.com/)
-2. Move to Applications and open
-3. Click "Initialize" to create a new server
-
-Verify installation:
-```
+# Verify installation
 psql --version
 ```
+
+#### Option 2: Using Postgres.app (GUI - Easiest)
+
+1. Go to [Postgres.app](https://postgresapp.com/)
+2. Download the latest version
+3. Move the `Postgres.app` to your Applications folder
+4. Double-click to launch it
+5. Click "Initialize" to create a new server
+6. PostgreSQL is now running in the background
+
+**Verify:**
+```bash
+psql --version
+```
+
+#### Option 3: Using MacPorts (Alternative)
+
+```bash
+sudo port install postgresql17
+```
+
+#### Option 4: Using Docker (Advanced)
+
+If you have Docker installed:
+```bash
+docker run --name postgres -e POSTGRES_PASSWORD=postgres -d postgres:17
+```
+
+#### Create Database
+
+```bash
+# Using psql
+psql -U postgres
+
+# In the PostgreSQL prompt:
+CREATE DATABASE csc317_project;
+\q
+```
+
+Or with Postgres.app:
+```bash
+/Applications/Postgres.app/Contents/Versions/17/bin/psql -U postgres
+```
+
+Then run the same SQL commands above.
+
+#### If psql command not found (Homebrew)
+
+Add PostgreSQL to your PATH. Edit `~/.zprofile` or `~/.bash_profile`:
+
+```bash
+nano ~/.zprofile
+```
+
+Add this line:
+```bash
+export PATH="/usr/local/opt/postgresql@17/bin:$PATH"
+```
+
+Save (Ctrl+X, then Y, then Enter), then reload:
+```bash
+source ~/.zprofile
+```
+
+---
 
 ### For Linux (Ubuntu/Debian):
 
 ```bash
 sudo apt update
 sudo apt install postgresql postgresql-contrib
+
+# Start PostgreSQL
 sudo systemctl start postgresql
 sudo systemctl enable postgresql
+
+# Verify installation
+psql --version
 ```
 
-### Create the Database
-
-After installing PostgreSQL, create a database for the project:
+#### Create Database
 
 ```bash
-# Connect to PostgreSQL as the postgres user
-psql -U postgres
+sudo -u postgres psql
 
-# In the PostgreSQL shell, create the database
+# In the PostgreSQL prompt:
 CREATE DATABASE csc317_project;
-
-# Exit the shell
 \q
 ```
 
-On macOS with Homebrew, you may need to use:
-```bash
-createdb csc317_project
-```
+## Step 3: Install Git
 
-## Step 3: Fork and Clone the Template
+### For Windows:
 
-1. **Fork the repository** on GitHub by clicking the "Fork" button in the top right corner
-
-2. **Clone your fork** locally:
-   ```bash
-   git clone https://github.com/YOUR-USERNAME/CSC317Project-F25.git
-   cd CSC317Project-F25
+1. Go to [Git for Windows](https://git-scm.com/download/win)
+2. Download the installer
+3. Run the installer and follow the wizard:
+   - Accept the license
+   - Choose installation location
+   - Use default options for most settings
+   - **Important:** When asked "Which editor would you like to use?", choose your preference (VS Code recommended)
+   - Complete the installation
+4. Open **Command Prompt** and verify:
+   ```cmd
+   git --version
    ```
 
-Alternatively, download the ZIP file of the project and extract it to a location of your choice.
+### For macOS:
 
-## Step 4: Install Project Dependencies
+**Option 1: Using Homebrew (Recommended)**
+```bash
+brew install git
+git --version
+```
+
+**Option 2: Using Installer**
+1. Go to [Git for Mac](https://git-scm.com/download/mac)
+2. Download the installer
+3. Run and follow the installation wizard
+
+**Option 3: Using Xcode Command Line Tools**
+```bash
+xcode-select --install
+```
+
+---
+
+## Step 4: Fork and Clone the Template
+
+### Step 4.1: Fork the Repository
+
+1. Go to the [CSC317 Repository](https://github.com/Mystic2122/CSC317Project-F25)
+2. Click the **"Fork"** button in the top right corner
+3. Select your GitHub account as the destination
+4. Wait for the fork to complete
+
+### Step 4.2: Clone Your Fork
+
+#### For Windows:
+
+Open **Command Prompt** or **PowerShell**:
+```cmd
+cd Documents
+git clone https://github.com/YOUR-USERNAME/CSC317Project-F25.git
+cd CSC317Project-F25
+```
+
+#### For macOS:
+
+Open **Terminal**:
+```bash
+cd Documents
+git clone https://github.com/YOUR-USERNAME/CSC317Project-F25.git
+cd CSC317Project-F25
+```
+
+#### For Linux:
+
+```bash
+cd ~
+git clone https://github.com/YOUR-USERNAME/CSC317Project-F25.git
+cd CSC317Project-F25
+```
+
+**Replace `YOUR-USERNAME` with your actual GitHub username!**
+
+### Alternative: Download as ZIP
+
+If you prefer not to use Git:
+1. Go to your forked repository on GitHub
+2. Click **"Code"** → **"Download ZIP"**
+3. Extract the ZIP file to your desired location
+
+## Step 5: Install Project Dependencies
 
 In the project directory, run:
-```
+
+#### For Windows (Command Prompt or PowerShell):
+```cmd
 npm install
 ```
 
-This will install all the required dependencies specified in package.json.
-
-## Step 5: Set Up Environment Variables
-
-Create a `.env` file in the root directory of the project:
-```
-cp .env.example .env
+#### For macOS and Linux (Terminal):
+```bash
+npm install
 ```
 
-Or manually create a file named `.env` in the project root directory with the following content:
+This will install all the required dependencies specified in `package.json`. You should see output showing packages being installed. Wait for it to complete.
+
+**Expected output:**
+```
+added 223 packages, and audited 224 packages in 12s
+```
+
+---
+
+## Step 6: Set Up Environment Variables
+
+### Step 6.1: Generate a Secure Session Secret
+
+#### For Windows (Command Prompt):
+```cmd
+node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+```
+
+#### For macOS and Linux (Terminal):
+```bash
+node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+```
+
+Copy the output string - you'll need it in the next step.
+
+### Step 6.2: Create the `.env` File
+
+Navigate to your project root directory and create a `.env` file:
+
+#### For Windows (using Notepad):
+1. Open Notepad
+2. Paste the following content:
 ```
 PORT=3000
 NODE_ENV=development
 DATABASE_URL=postgresql://postgres:your_password@localhost:5432/csc317_project
-SESSION_SECRET=your_secure_random_string_here
+SESSION_SECRET=paste_the_generated_string_here
+```
+3. Replace `your_password` with the PostgreSQL password you set earlier
+4. Replace `paste_the_generated_string_here` with the string from Step 6.1
+5. Save as `.env` in your project root folder (important: not `.env.txt`)
+
+#### For macOS and Linux (using Terminal):
+```bash
+cat > .env << 'EOF'
+PORT=3000
+NODE_ENV=development
+DATABASE_URL=postgresql://postgres:your_password@localhost:5432/csc317_project
+SESSION_SECRET=paste_the_generated_string_here
+EOF
 ```
 
-Notes:
-- `PORT`: The port on which the application will run (default: 3000)
-- `NODE_ENV`: The environment (development, production, etc.)
-- `DATABASE_URL`: The connection string for your PostgreSQL database
-  - Format: `postgresql://username:password@host:port/database_name`
-  - Replace `your_password` with the password you set during PostgreSQL installation
-- `SESSION_SECRET`: A random string used to sign the session ID cookie (for security)
+Replace `your_password` and the SESSION_SECRET accordingly.
 
-For the `SESSION_SECRET`, you should use a long, random string. You can generate one by running this in the terminal:
-```
-node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+### Step 6.3: Verify the `.env` File
+
+#### For Windows:
+In Command Prompt, run:
+```cmd
+type .env
 ```
 
-## Step 6: Initialize the Database Tables
-
-Run the database initialization script to create the required tables:
+#### For macOS and Linux:
+In Terminal, run:
+```bash
+cat .env
 ```
+
+You should see the environment variables you just set.
+
+---
+
+## Step 7: Initialize the Database Tables
+
+Run the database initialization script:
+
+#### For Windows:
+```cmd
 npm run db:init
 ```
 
-You should see output like:
+#### For macOS and Linux:
+```bash
+npm run db:init
 ```
+
+**Expected output:**
+```
+Connected to PostgreSQL database
 ✓ Users table created
 ✓ Profile images table created
 ✓ Session table created
@@ -180,16 +480,42 @@ You should see output like:
 ✅ Database initialization complete!
 ```
 
-## Step 7: Start the Application
+If you see an error, make sure:
+- PostgreSQL is running
+- The `DATABASE_URL` in `.env` is correct
+- You've set the correct password
 
-In the project directory, run:
-```
+---
+
+## Step 8: Start the Application
+
+### For Windows (Command Prompt or PowerShell):
+```cmd
 npm run dev
 ```
 
-This will start the application in development mode with nodemon, which automatically restarts the server when you make changes to the code.
+### For macOS and Linux (Terminal):
+```bash
+npm run dev
+```
 
-## Step 8: Access the Application
+**Expected output:**
+```
+[nodemon] 3.1.11
+[nodemon] watching path(s): *.*
+[nodemon] starting `node app.js`
+PostgreSQL session store configured
+CSRF protection is currently disabled
+Server running on http://localhost:3000
+Connected to PostgreSQL database
+PostgreSQL connected successfully
+```
+
+The server is now running!
+
+---
+
+## Step 9: Access the Application
 
 Open your web browser and navigate to:
 ```
@@ -197,6 +523,36 @@ http://localhost:3000
 ```
 
 You should see the home page of the authentication template.
+
+### Test the Application
+
+1. Click **"Register"** and create a test account
+2. Fill in:
+   - Username: testuser
+   - Email: test@example.com
+   - Password: Test1234 (or any password meeting the requirements)
+3. Click **"Register"**
+4. You should be redirected to the login page with a success message
+5. Click **"Login"** and log in with your credentials
+6. You should be redirected to your profile page
+7. Click **"Settings"** to test the profile image upload feature
+8. Click **"Logout"** to test the logout functionality
+
+---
+
+## Stopping the Application
+
+### For Windows:
+In Command Prompt/PowerShell where the app is running, press:
+```
+Ctrl + C
+```
+
+### For macOS and Linux:
+In Terminal where the app is running, press:
+```
+Ctrl + C
+```
 
 ---
 
