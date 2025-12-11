@@ -168,3 +168,32 @@ exports.getUserProfileImage = async (req, res, next) => {
     next(error);
   }
 };
+
+/**
+ * Delete user account
+ */
+exports.deleteAccount = async (req, res, next) => {
+  try {
+    const userId = req.session.user.id;
+
+    // Delete the user account (CASCADE will delete related data)
+    const deleted = await User.deleteAccount(userId);
+
+    if (deleted) {
+      // Destroy session
+      req.session.destroy((err) => {
+        if (err) {
+          console.error('Error destroying session:', err);
+          return res.status(500).json({ error: 'Failed to destroy session' });
+        }
+        // Return success response for AJAX request
+        return res.json({ success: true, message: 'Account deleted successfully' });
+      });
+    } else {
+      return res.status(500).json({ error: 'Failed to delete account' });
+    }
+  } catch (error) {
+    console.error('Delete account error:', error);
+    return res.status(500).json({ error: 'An error occurred while deleting account' });
+  }
+};

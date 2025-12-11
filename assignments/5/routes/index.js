@@ -7,6 +7,7 @@ const router = express.Router();
 const Movie = require('../models/Movie');
 const Review = require('../models/Review');
 const { isAuthenticated } = require('../middlewares/auth');
+const { body, validationResult } = require('express-validator');
 
 // Root page route
 router.get('/', (req, res) => {
@@ -218,18 +219,26 @@ router.get('/movies/:id', async (req, res, next) => {
   }
 });
 
+// Review validation middleware
+const reviewValidation = [
+  body('review')
+    .trim()
+    .isLength({ min: 10, max: 1000 })
+    .withMessage('Review must be between 10 and 1000 characters')
+];
+
 // Create or update review for a movie
-router.post('/movies/:id/review', isAuthenticated, async (req, res, next) => {
+router.post('/movies/:id/review', isAuthenticated, reviewValidation, async (req, res, next) => {
   try {
     const movieId = parseInt(req.params.id, 10);
     if (isNaN(movieId)) {
       return res.status(400).send('Invalid movie id');
     }
 
-    const reviewText = (req.body.review || '').trim();
-
-    if (!reviewText) {
-      // Re-render page with error
+    // Check validation results
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      // Re-render page with validation errors
       const movie = await Movie.findById(movieId);
       if (!movie) {
         return res.status(404).send('Movie not found');
@@ -245,9 +254,11 @@ router.post('/movies/:id/review', isAuthenticated, async (req, res, next) => {
         userReview,
         isAuthenticated: req.session.user,
         path: req.path,
-        reviewError: 'Review cannot be empty.',
+        reviewError: errors.array()[0].msg,
       });
     }
+
+    const reviewText = (req.body.review || '').trim();
 
     // Insert or update the review
     await Review.upsert(req.session.user.id, movieId, reviewText);

@@ -148,6 +148,20 @@ const updateProfileImageFlag = async (userId, hasImage) => {
   return result.rows[0];
 };
 
+/**
+ * Delete a user account and all associated data
+ * @param {number} userId - User's ID
+ * @returns {Promise<boolean>} True if deleted successfully
+ */
+const deleteAccount = async (userId) => {
+  const result = await query(
+    'DELETE FROM users WHERE id = $1 RETURNING id',
+    [userId]
+  );
+
+  return result.rows.length > 0;
+};
+
 module.exports = {
   create,
   findByEmail,
@@ -157,5 +171,6 @@ module.exports = {
   usernameExists,
   comparePassword,
   updateUsername,
-  updateProfileImageFlag
+  updateProfileImageFlag,
+  deleteAccount
 };
