@@ -96,7 +96,8 @@ header {
   transition: color 0.3s;
 }
 
-.nav-links a:hover, .nav-links a.active {
+.nav-links a:hover,
+.nav-links a.active {
   color: var(--primary-color);
 }
 
@@ -104,10 +105,10 @@ header {
 /*Movies*/
 
 #movie-about {
-    padding: 100px;
-    background: linear-gradient(160deg, #1e1e1e, #2e2e2e);
-    background-color: var(--background-color);
-    box-shadow: var(--shadow);
+  padding: 100px;
+  background: linear-gradient(160deg, #1e1e1e, #2e2e2e);
+  background-color: var(--background-color);
+  box-shadow: var(--shadow);
 }
 
 .movie-section {
@@ -128,41 +129,42 @@ header {
 }
 
 #movieContainer {
-    padding: 10px;
-    display: flex;
-    text-align: center;
-    align-items: center;
+  padding: 10px;
+  display: flex;
+  text-align: center;
+  align-items: center;
 }
 
 #movieBox {
-    display:flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    
-    margin: 10px;
-    border-radius: 21px;
-    background: linear-gradient(160deg, rgb(119, 0, 0), #3d0000);
-    width: 200px;
-    height: 300px;
-    overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 
-    box-shadow: var(--shadow);
-    transition: all 0.4s ease;
+  margin: 10px;
+  border-radius: 21px;
+  background: linear-gradient(160deg, rgb(119, 0, 0), #3d0000);
+  width: 200px;
+  height: 300px;
+  overflow: hidden;
+
+  box-shadow: var(--shadow);
+  transition: all 0.4s ease;
 }
 
-#movieBox h1, #movieBox p {
-    display:flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    
-    margin: 10px;
-    width: 200px;
-    height: 300px;
+#movieBox h1,
+#movieBox p {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  margin: 10px;
+  width: 200px;
+  height: 300px;
 }
 
 #movieBox:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 1);
+  transform: scale(1.05);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 1);
 }
 
 /****************************************/
@@ -182,7 +184,8 @@ footer {
 /* 
  * Form Elements 
  */
-.auth-form, .settings-container {
+.auth-form,
+.settings-container {
   max-width: 500px;
   margin: 2rem auto;
   padding: 2rem;
@@ -282,6 +285,55 @@ input:focus {
   margin-top: 2rem;
 }
 
+/* Review form styling */
+.review-form-group {
+  margin-bottom: 1rem;
+}
+
+.review-form-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.fetch-btn {
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 15px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.fetch-btn:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.fetch-btn.delete-btn {
+  background-color: var(--error-color);
+}
+
+.fetch-btn.delete-btn:hover {
+  background-color: #c0392b;
+}
+
+.char-counter {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-top: 0.25rem;
+}
+
+.review-note {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  margin-top: 1rem;
+  font-style: italic;
+}
+
 /* 
  * Flash Messages 
  */
@@ -337,6 +389,7 @@ input:focus {
     transform: translateY(-20px);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -435,7 +488,8 @@ input:focus {
 /* 
  * About Page 
  */
-.about-section, .tech-stack {
+.about-section,
+.tech-stack {
   background-color: var(--background-color);
   padding: 2rem;
   border-radius: 30px;
@@ -448,7 +502,8 @@ input:focus {
   margin-bottom: 1.5rem;
 }
 
-.about-section ul, .tech-stack ul {
+.about-section ul,
+.tech-stack ul {
   padding-left: 1.5rem;
   margin: 1rem 0;
 }
@@ -534,7 +589,8 @@ input:focus {
   color: var(--text-light);
 }
 
-.profile-section, .settings-section {
+.profile-section,
+.settings-section {
   margin: 20px;
   background-color: var(--background-color);
   border-radius: 15px;
@@ -542,7 +598,8 @@ input:focus {
   padding: 2rem;
 }
 
-.profile-section h3, .settings-section h3 {
+.profile-section h3,
+.settings-section h3 {
   color: var(--primary-color);
   margin-bottom: 1rem;
 }
@@ -616,34 +673,34 @@ details pre {
     flex-direction: column;
     padding: 1rem;
   }
-  
+
   .logo {
     margin-bottom: 1rem;
   }
-  
+
   .nav-links {
     flex-wrap: wrap;
     justify-content: center;
   }
-  
+
   .feature-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .profile-header {
     flex-direction: column;
     text-align: center;
   }
-  
+
   .profile-avatar {
     margin-right: 0;
     margin-bottom: 1rem;
   }
-  
+
   .info-item {
     flex-direction: column;
   }
-  
+
   .info-item .label {
     margin-bottom: 0.5rem;
   }

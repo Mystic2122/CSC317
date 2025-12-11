@@ -10,7 +10,7 @@ const { isAuthenticated } = require('../middlewares/auth');
 
 // Root page route
 router.get('/', (req, res) => {
-  res.render('index', { 
+  res.render('index', {
     title: 'Home',
     message: 'Welcome to the Movie Review',
     isAuthenticated: req.session.user,
@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
 
 // About page route
 router.get('/about', (req, res) => {
-  res.render('about', { 
+  res.render('about', {
     title: 'About',
     message: 'Learn about this application',
     isAuthenticated: req.session.user,
@@ -259,6 +259,33 @@ router.post('/movies/:id/review', isAuthenticated, async (req, res, next) => {
   }
 });
 
+// Delete a review
+router.delete('/movies/:movieId/review', isAuthenticated, async (req, res, next) => {
+  try {
+    const movieId = parseInt(req.params.movieId, 10);
+    if (isNaN(movieId)) {
+      return res.status(400).json({ error: 'Invalid movie id' });
+    }
 
+    const userId = req.session.user.id;
+
+    // Check if review exists and belongs to user
+    const existingReview = await Review.getUserReviewForMovie(userId, movieId);
+    if (!existingReview) {
+      return res.status(404).json({ error: 'Review not found' });
+    }
+
+    // Delete the review
+    const deleted = await Review.deleteReview(userId, movieId);
+
+    if (deleted) {
+      return res.json({ success: true, message: 'Review deleted successfully' });
+    } else {
+      return res.status(500).json({ error: 'Failed to delete review' });
+    }
+  } catch (err) {
+    next(err);
+  }
+});
 
 module.exports = router;

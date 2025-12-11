@@ -1,89 +1,156 @@
 <%- include('./partials/header') %>
 
-<main class="container home-container">
-  <!-- Movie info -->
-  <section class="section">
-    <article class="movie-card movie-card-featured">
-      <div class="movie-poster-link">
-        <% if (movie.image) { %>
-          <img src="<%= movie.image %>" alt="<%= movie.title %> poster" class="movie-poster featured-poster">
-        <% } else { %>
-          <div class="movie-poster placeholder featured-poster">No Image</div>
-        <% } %>
-      </div>
+  <main class="container home-container">
+    <!-- Movie info -->
+    <section class="section">
+      <article class="movie-card movie-card-featured">
+        <div class="movie-poster-link">
+          <% if (movie.image) { %>
+            <img src="<%= movie.image %>" alt="<%= movie.title %> poster" class="movie-poster featured-poster">
+            <% } else { %>
+              <div class="movie-poster placeholder featured-poster">No Image</div>
+              <% } %>
+        </div>
 
-      <div class="movie-meta featured-meta">
-        <h1 class="movie-title"><%= movie.title %></h1>
-        <p class="movie-sub">
-          <span><%= movie.year || 'N/A' %></span>
-          <span>•</span>
-          <span><%= movie.rating || 'NR' %></span>
-          <% if (movie.genre) { %>
+        <div class="movie-meta featured-meta">
+          <h1 class="movie-title">
+            <%= movie.title %>
+          </h1>
+          <p class="movie-sub">
+            <span>
+              <%= movie.year || 'N/A' %>
+            </span>
             <span>•</span>
-            <span><%= movie.genre %></span>
-          <% } %>
-        </p>
-
-        <% if (movie.plot) { %>
-          <p class="movie-plot"><%= movie.plot %></p>
-        <% } %>
-      </div>
-    </article>
-  </section>
-
-  <!-- Review form -->
-  <section class="section">
-    <h2 class="section-title">Your Review</h2>
-
-    <% if (!isAuthenticated) { %>
-      <p>You must <a href="/auth/login">log in</a> to leave a review.</p>
-    <% } else { %>
-      <% if (reviewError) { %>
-        <div class="error-message"><%= reviewError %></div>
-      <% } %>
-
-      <form action="/movies/<%= movie.id %>/review" method="POST" class="review-form">
-        <textarea
-          name="review"
-          rows="4"
-          placeholder="Write your thoughts about this movie..."
-          required
-        ><%= userReview ? userReview.review : '' %></textarea>
-
-        <button type="submit" class="fetch-btn">
-          Save Review
-        </button>
-      </form>
-
-      <p class="review-note">
-        You can update your review at any time. Saving again will overwrite your previous review.
-      </p>
-    <% } %>
-  </section>
-
-  <!-- All reviews -->
-  <section class="section">
-    <h2 class="section-title">All Reviews</h2>
-
-    <% if (reviews && reviews.length) { %>
-      <ul class="reviews-list">
-        <% reviews.forEach(r => { %>
-          <li class="review-item">
-            <div class="review-header">
-              <strong><%= r.username %></strong>
-              <span class="review-meta">
-                <%= new Date(r.created_at).toLocaleDateString() %>
-                <% if (r.edited) { %> · edited <% } %>
+            <span>
+              <%= movie.rating || 'NR' %>
+            </span>
+            <% if (movie.genre) { %>
+              <span>•</span>
+              <span>
+                <%= movie.genre %>
               </span>
-            </div>
-            <p class="review-text"><%= r.review %></p>
-          </li>
-        <% }) %>
-      </ul>
-    <% } else { %>
-      <p>No reviews yet. Be the first to review this movie!</p>
-    <% } %>
-  </section>
-</main>
+              <% } %>
+          </p>
 
-<%- include('./partials/footer') %>
+          <% if (movie.plot) { %>
+            <p class="movie-plot">
+              <%= movie.plot %>
+            </p>
+            <% } %>
+        </div>
+      </article>
+    </section>
+
+    <!-- Review form -->
+    <section class="section">
+      <h2 class="section-title">Your Review</h2>
+
+      <% if (!isAuthenticated) { %>
+        <p>You must <a href="/auth/login">log in</a> to leave a review.</p>
+        <% } else { %>
+          <% if (reviewError) { %>
+            <div class="error-message">
+              <%= reviewError %>
+            </div>
+            <% } %>
+
+              <form action="/movies/<%= movie.id %>/review" method="POST" class="review-form">
+                <div class="review-form-group">
+                  <textarea id="reviewText" name="review" rows="4" placeholder="Write your thoughts about this movie..."
+                    minlength="10" maxlength="1000" required><%= userReview ? userReview.review : '' %></textarea>
+                  <div class="char-counter">
+                    <span id="charCount">0</span>/1000 characters
+                  </div>
+                </div>
+
+                <div class="review-form-actions">
+                  <button type="submit" class="fetch-btn">
+                    <%= userReview ? 'Update Review' : 'Save Review' %>
+                  </button>
+                  <% if (userReview) { %>
+                    <button type="button" class="fetch-btn delete-btn" onclick="deleteReview(<%= movie.id %>)">
+                      Delete Review
+                    </button>
+                    <% } %>
+                </div>
+              </form>
+
+              <p class="review-note">
+                <%= userReview ? 'You can update or delete your review at any time.'
+                  : 'Write a review to share your thoughts with other users.' %>
+              </p>
+              <% } %>
+    </section>
+
+    <!-- All reviews -->
+    <section class="section">
+      <h2 class="section-title">All Reviews</h2>
+
+      <% if (reviews && reviews.length) { %>
+        <ul class="reviews-list">
+          <% reviews.forEach(r=> { %>
+            <li class="review-item">
+              <div class="review-header">
+                <strong>
+                  <%= r.username %>
+                </strong>
+                <span class="review-meta">
+                  <%= new Date(r.created_at).toLocaleDateString() %>
+                    <% if (r.edited) { %> · edited <% } %>
+                </span>
+              </div>
+              <p class="review-text">
+                <%= r.review %>
+              </p>
+            </li>
+            <% }) %>
+        </ul>
+        <% } else { %>
+          <p>No reviews yet. Be the first to review this movie!</p>
+          <% } %>
+    </section>
+  </main>
+
+  <script>
+    // Character counter for review textarea
+    const reviewText = document.getElementById('reviewText');
+    const charCount = document.getElementById('charCount');
+
+    if (reviewText && charCount) {
+      reviewText.addEventListener('input', function () {
+        charCount.textContent = this.value.length;
+      });
+      // Initialize on page load
+      charCount.textContent = reviewText.value.length;
+    }
+
+    // Delete review function
+    function deleteReview(movieId) {
+      if (confirm('Are you sure you want to delete your review? This action cannot be undone.')) {
+        fetch(`/movies/${movieId}/review`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Failed to delete review');
+            }
+            return response.json();
+          })
+          .then(data => {
+            if (data.success) {
+              alert('Review deleted successfully!');
+              window.location.reload();
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            alert('Error deleting review: ' + error.message);
+          });
+      }
+    }
+  </script>
+
+  <%- include('./partials/footer') %>
