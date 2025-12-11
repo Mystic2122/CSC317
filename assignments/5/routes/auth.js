@@ -78,5 +78,9 @@ router.post('/login', isNotAuthenticated, loginValidation, authController.postLo
 
 // GET /auth/logout - Logout user
 router.get('/logout', authController.logout);
+// GET /auth/forgot-password - Display forgot password form
+router.get('/forgot-password', isNotAuthenticated, authController.getForgotPassword);
 
+// POST /auth/forgot-password - Process password reset
+router.post('/forgot-password', isNotAuthenticated, authController.postForgotPassword);
 module.exports = router;

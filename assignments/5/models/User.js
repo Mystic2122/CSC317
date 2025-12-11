@@ -149,6 +149,36 @@ const updateProfileImageFlag = async (userId, hasImage) => {
 };
 
 /**
+ * Reset user password by email and username
+ * @param {string} email - User's email
+ * @param {string} username - User's username
+ * @param {string} newPassword - New password
+ * @returns {Promise<boolean>} True if password was reset successfully
+ */
+const resetPassword = async (email, username, newPassword) => {
+  // Verify email and username match
+  const user = await query(
+    'SELECT id FROM users WHERE email = $1 AND username = $2',
+    [email.toLowerCase(), username]
+  );
+
+  if (user.rows.length === 0) {
+    return false;
+  }
+
+  // Hash new password
+  const hashedPassword = await bcrypt.hash(newPassword, SALT_ROUNDS);
+
+  // Update password
+  await query(
+    'UPDATE users SET password = $1 WHERE id = $2',
+    [hashedPassword, user.rows[0].id]
+  );
+
+  return true;
+};
+
+/**
  * Delete a user account and all associated data
  * @param {number} userId - User's ID
  * @returns {Promise<boolean>} True if deleted successfully
@@ -171,6 +201,7 @@ module.exports = {
   usernameExists,
   comparePassword,
   updateUsername,
+  resetPassword,
   updateProfileImageFlag,
   deleteAccount
 };

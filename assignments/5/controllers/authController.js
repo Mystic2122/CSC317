@@ -163,3 +163,59 @@ exports.logout = (req, res) => {
     res.redirect('/');
   });
 };
+/**
+ * Display forgot password form
+ */
+exports.getForgotPassword = (req, res) => {
+  res.render('auth/forgot-password', {
+    title: 'Reset Password',
+    errors: []
+  });
+};
+
+/**
+ * Process forgot password form submission
+ */
+exports.postForgotPassword = async (req, res, next) => {
+  try {
+    const { email, username, newPassword, confirmPassword } = req.body;
+
+    // Validate passwords match
+    if (newPassword !== confirmPassword) {
+      return res.status(400).render('auth/forgot-password', {
+        title: 'Reset Password',
+        errors: [{ msg: 'Passwords do not match' }],
+        formData: { email, username }
+      });
+    }
+
+    // Validate password length
+    if (newPassword.length < 8) {
+      return res.status(400).render('auth/forgot-password', {
+        title: 'Reset Password',
+        errors: [{ msg: 'Password must be at least 8 characters long' }],
+        formData: { email, username }
+      });
+    }
+
+    // Attempt to reset password
+    const success = await User.resetPassword(email, username, newPassword);
+
+    if (!success) {
+      return res.status(400).render('auth/forgot-password', {
+        title: 'Reset Password',
+        errors: [{ msg: 'Email and username do not match any account' }],
+        formData: { email, username }
+      });
+    }
+
+    // Redirect to login with success message
+    req.session.flashMessage = {
+      type: 'success',
+      text: 'Password reset successfully! You can now log in with your new password.'
+    };
+    res.redirect('/auth/login');
+  } catch (error) {
+    next(error);
+  }
+};
