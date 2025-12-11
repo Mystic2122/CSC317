@@ -104,6 +104,16 @@ header {
 /****************************************/
 /*Movies*/
 
+.movie-grid {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 150px;
+  gap: 15px;
+
+  overflow-x: auto;          
+  padding-bottom: 15px;  
+}
+
 #movie-about {
   padding: 100px;
   background: linear-gradient(160deg, #1e1e1e, #2e2e2e);
