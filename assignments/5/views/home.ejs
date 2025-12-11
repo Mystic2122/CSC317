@@ -1,24 +1,95 @@
 <%- include('./partials/header') %>
-    <div class="movie-section">
 
-      <div id="movie-about">
-        <h1>Look at the Movies Below</h1>
-        <p>Check them out</p>
+<main>
+  <div class="container home-container">
+
+    <!-- Featured Movie -->
+    <section class="section featured-section">
+      <h1 class="section-title">Featured Movie</h1>
+
+      
+
+    <!-- Trending -->
+    <section class="section">
+      <h2 class="section-title">Trending Now</h2>
+      <p class="section-subtitle">Based on reviews from the last 7 days</p>
+
+      <div class="movie-grid">
+        <% if (trendingMovies && trendingMovies.length) { %>
+          <% trendingMovies.forEach(movie => { %>
+            <article class="movie-card">
+              <a href="/movies/<%= movie.id %>" class="movie-poster-link">
+                <div class="badge badge-quality">HD</div>
+                <% if (movie.image) { %>
+                  <img src="<%= movie.image %>" alt="<%= movie.title %> poster" class="movie-poster">
+                <% } else { %>
+                  <div class="movie-poster placeholder">No Image</div>
+                <% } %>
+              </a>
+
+              <div class="movie-meta">
+                <h3 class="movie-title">
+                  <a href="/movies/<%= movie.id %>"><%= movie.title %></a>
+                </h3>
+                <p class="movie-sub">
+                  <span><%= movie.year || 'N/A' %></span>
+                  <span>•</span>
+                  <span><%= movie.rating || 'NR' %></span>
+                </p>
+                <p class="movie-extra">
+                  🔥 <%= movie.review_count_week %> reviews this week
+                </p>
+                <span class="movie-pill">Movie</span>
+              </div>
+            </article>
+          <% }) %>
+        <% } else { %>
+          <p>No trending movies in the last week.</p>
+        <% } %>
       </div>
+    </section>
 
-      <h1>Trending Now</h1>
-      <div id="movieContainer">
-        <div id="movieBox"><h2>FNAF 2</h2><p>2026</p></div>
-        <div id="movieBox"><h2>FNAF 2</h2><p>2026</p></div>
-        <div id="movieBox"><h2>FNAF 2</h2><p>2026</p></div>
+    <!-- Popular -->
+    <section class="section">
+      <h2 class="section-title">Popular Movies</h2>
+      <p class="section-subtitle">Most reviewed movies of all time</p>
+
+      <div class="movie-grid">
+        <% if (popularMovies && popularMovies.length) { %>
+          <% popularMovies.forEach(movie => { %>
+            <article class="movie-card">
+              <a href="/movies/<%= movie.id %>" class="movie-poster-link">
+
+                <% if (movie.image) { %>
+                  <img src="<%= movie.image %>" alt="<%= movie.title %> poster" class="movie-poster">
+                <% } else { %>
+                  <div class="movie-poster placeholder">No Image</div>
+                <% } %>
+              </a>
+
+              <div class="movie-meta">
+                <h3 class="movie-title">
+                  <a href="/movies/<%= movie.id %>"><%= movie.title %></a>
+                </h3>
+                <p class="movie-sub">
+                  <span><%= movie.year || 'N/A' %></span>
+                  <span>•</span>
+                  <span><%= movie.rating || 'NR' %></span>
+                </p>
+                <p class="movie-extra">
+                  ⭐ <%= movie.review_count_all || 0 %> total reviews
+                </p>
+                <span class="movie-pill">Movie</span>
+              </div>
+            </article>
+          <% }) %>
+        <% } else { %>
+          <p>No popular movies yet.</p>
+        <% } %>
       </div>
+    </section>
 
-      <h1>Popular Movies</h1>
-      <div id="movieContainer">
-        <div id="movieBox"><div id="info"><h2>FNAF 2</h2><p>2026</p></div></div>
-        <div id="movieBox"><div id="info"><h2>FNAF 2</h2><p>2026</p></div></div>
-        <div id="movieBox"><div id="info"><h2>FNAF 2</h2><p>2026</p></div></div>
-      </div>
+  </div>
+</main>
 
-    </div>
 <%- include('./partials/footer') %>

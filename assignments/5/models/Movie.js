@@ -84,9 +84,78 @@ const findMovieByTitle = async (title) => {
     return [newRow];
 };
 
+// Get most-reviewed movies of all time (popular), including movies with 0 reviews
+const getPopularMovies = async (limit = 10) => {
+  const result = await query(
+    `SELECT
+       m.id,
+       m.title,
+       m.year,
+       m.rating,
+       m.genre,
+       m.plot,
+       m.image,
+       COUNT(r.user_id) AS review_count_all
+     FROM movies m
+     LEFT JOIN reviews r ON r.movie_id = m.id
+     GROUP BY m.id
+     ORDER BY review_count_all DESC, m.title ASC
+     LIMIT $1`,
+    [limit]
+  );
+  return result.rows;
+};
+
+// Get most-reviewed movies in the last 7 days (trending)
+// This only includes movies that HAVE reviews this week
+const getTrendingMovies = async (limit = 5) => {
+  const result = await query(
+    `SELECT
+       m.id,
+       m.title,
+       m.year,
+       m.rating,
+       m.genre,
+       m.plot,
+       m.image,
+       COUNT(r.user_id) AS review_count_week
+     FROM movies m
+     JOIN reviews r ON r.movie_id = m.id
+     WHERE r.created_at >= NOW() - INTERVAL '7 days'
+     GROUP BY m.id
+     ORDER BY review_count_week DESC, m.title ASC
+     LIMIT $1`,
+    [limit]
+  );
+  return result.rows;
+};
+
+// Fallback: get more movies (even with 0 reviews) to ensure we have enough
+const getAdditionalMovies = async (excludeIds = [], limit = 10) => {
+  const result = await query(
+    `SELECT
+       m.id,
+       m.title,
+       m.year,
+       m.rating,
+       m.genre,
+       m.plot,
+       m.image
+     FROM movies m
+     WHERE NOT (m.id = ANY($1))
+     ORDER BY m.year DESC, m.title ASC
+     LIMIT $2`,
+    [excludeIds, limit]
+  );
+  return result.rows;
+};
+
 module.exports = {
     insert,
     findMovieByTitle,
+    getPopularMovies,
+    getTrendingMovies,
+    getAdditionalMovies,
 };
 
 

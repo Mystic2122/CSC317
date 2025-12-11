@@ -6,6 +6,7 @@
  */
 
 const { Pool } = require('pg');
+require('dotenv').config()
 
 // Create a connection pool using the DATABASE_URL environment variable
 // This URL format works for both local PostgreSQL and Render.com
