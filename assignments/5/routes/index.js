@@ -93,8 +93,10 @@ router.get('/search', async (req, res, next) => {
       query,
       results,
       isAuthenticated: req.session.user,
-      path: req.path
+      path: req.path,
+      error: null      // 👈 add this
     });
+
 
   } catch (err) {
     next(err);
