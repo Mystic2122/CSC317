@@ -49,6 +49,18 @@ h1 {
   padding: 20px;
 }
 
+#movieSearch {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px 20px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 30px;
+  background-color: #f8f8f8;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
 #movieContainer {
     padding: 10px;
     display: flex;
@@ -349,6 +361,7 @@ input:focus {
 .welcome-section {
   text-align: center;
   padding: 3rem 0;
+  border: 2px solid red;
 }
 
 .welcome-section h1 {
