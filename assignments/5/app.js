@@ -28,6 +28,8 @@ const { handleErrors } = require('./middlewares/error-handler');
 // Initialize Express app
 const app = express();
 
+app.set('trust proxy', 1);
+
 // Test database connection on startup
 if (process.env.DATABASE_URL) {
   pool.query('SELECT NOW()')
