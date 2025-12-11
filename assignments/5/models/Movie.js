@@ -29,60 +29,64 @@ const insert = async (title, year, rating, genre, plot, image) => {
     return result.rows[0];
 };
 
-/**
- * @param {string} title
- * @returns {Promise<Object[] | Object>}
- */
-const findMovieByTitle = async (title) => {
-    const result = await query(
-        `SELECT title, year, rating, genre, plot, image
-         FROM movies
-         WHERE LOWER(title) = LOWER($1)`,
-         [title]
-    );
+const findMovieByTitle = async (title, year) => {
+  const params = [title];
+  let sql = `
+    SELECT id, title, year, rating, genre, plot, image
+    FROM movies
+    WHERE LOWER(title) = LOWER($1)
+  `;
 
-    if (result.rows.length > 0){
-        console.log("Loaded movie(s) from db");
-        return result.rows;
-    }
+  if (year) {
+    sql += ' AND year = $2';
+    params.push(year);
+  }
 
-    console.log("Fetching movie from external API");
-    const API_KEY = process.env.MOVIE_API_KEY;
+  const result = await query(sql, params);
 
-    
+  if (result.rows.length > 0) {
+    console.log("Loaded movie(s) from db");
+    return result.rows;
+  }
 
-    async function APIgetMovie(url) {
-        const res = await fetch(url);
-        const data = await res.json();
-        return data;
-    }
-    
-    const url = `http://www.omdbapi.com/?apikey=${API_KEY}&t=${title}`
-    const newMovie = await APIgetMovie(url);
-    console.log("OMDb response:", newMovie);
+  console.log("Fetching movie from external API");
+  const API_KEY = process.env.MOVIE_API_KEY;
 
-    if (!newMovie || newMovie.Response === "False") {
-        console.error("OMDb error:", newMovie && newMovie.Error);
-        throw new Error("Failed to fetch movie from OMDb");
-    }
-    
-    const newTitle = newMovie['Title']
-    let yearVal = parseInt(newMovie["Year"]);
-    if (isNaN(yearVal)) {
-        yearVal = null;
-    }
+  async function APIgetMovie(url) {
+    const res = await fetch(url);
+    const data = await res.json();
+    return data;
+  }
 
-    const rating = newMovie['Rated'];
-    
+  let url = `http://www.omdbapi.com/?apikey=${API_KEY}&t=${encodeURIComponent(title)}`;
+  if (year) {
+    url += `&y=${year}`;
+  }
 
-    const genre = newMovie['Genre']
-    const plot = newMovie['Plot']
-    const image = newMovie['Poster']
+  const newMovie = await APIgetMovie(url);
+  console.log("OMDb response:", newMovie);
 
-    const newRow = await insert(newTitle, yearVal, rating, genre, plot, image);
-    console.log("Saved movie to DB from API");
-    return [newRow];
+  if (!newMovie || newMovie.Response === "False") {
+    console.error("OMDb error:", newMovie && newMovie.Error);
+    throw new Error("Failed to fetch movie from OMDb");
+  }
+
+  const newTitle = newMovie['Title'];
+  let yearVal = parseInt(newMovie["Year"]);
+  if (isNaN(yearVal)) {
+    yearVal = null;
+  }
+
+  const rating = newMovie['Rated'];
+  const genre = newMovie['Genre'];
+  const plot = newMovie['Plot'];
+  const image = newMovie['Poster'];
+
+  const newRow = await insert(newTitle, yearVal, rating, genre, plot, image);
+  console.log("Saved movie to DB from API");
+  return [newRow];
 };
+
 
 // Get most-reviewed movies of all time (popular), including movies with 0 reviews
 const getPopularMovies = async (limit = 10) => {
@@ -150,12 +154,23 @@ const getAdditionalMovies = async (excludeIds = [], limit = 10) => {
   return result.rows;
 };
 
+const findLocalMovies = async (title) => {
+  const result = await query(
+    `SELECT id, title, year, rating, genre, plot, image
+     FROM movies
+     WHERE title ILIKE $1`,
+    [`%${title}%`]        
+  );
+  return result.rows;
+};
+
 module.exports = {
     insert,
     findMovieByTitle,
     getPopularMovies,
     getTrendingMovies,
     getAdditionalMovies,
+    findLocalMovies,
 };
 
 

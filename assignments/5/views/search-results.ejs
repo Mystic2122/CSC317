@@ -1,0 +1,93 @@
+<%- include('./partials/header') %>
+
+<main class="container home-container">
+  <h1>Search Results for "<%= query %>"</h1>
+
+    <% if (error) { %>
+    <div class="error-message">
+      <%= error %>
+    </div>
+    <% } %>
+
+  <div class="movie-grid">
+    <% if (results && results.length) { %>
+
+      <% results.forEach(movie => { %>
+        <article class="movie-card">
+          <a href="/movies/<%= movie.id %>" class="movie-poster-link">
+            <% if (movie.image) { %>
+              <img src="<%= movie.image %>" class="movie-poster" alt="<%= movie.title %>">
+            <% } else { %>
+              <div class="movie-poster placeholder">No Image</div>
+            <% } %>
+          </a>
+
+          <div class="movie-meta">
+            <h3 class="movie-title">
+              <a href="/movies/<%= movie.id %>"><%= movie.title %></a>
+            </h3>
+            <p class="movie-sub">
+              <span><%= movie.year || 'N/A' %></span>
+              <span>•</span>
+              <span><%= movie.rating || 'NR' %></span>
+            </p>
+            <p class="movie-extra"><%= movie.genre %></p>
+          </div>
+        </article>
+      <% }) %>
+
+    <% } else { %>
+      <p>No movies found.</p>
+    <% } %>
+  </div>
+
+  <!-- Don't see your movie? -->
+  <section class="add-movie-section">
+    <div><br>Don’t see your movie?</div>
+      
+
+
+    <form id="add-movie-form" class="add-movie-form hidden" action="/movies/add-from-api" method="POST">
+      <div class="form-row">
+        <label for="movieTitle"><br>Movie Title</label>
+        <input
+          type="text"
+          id="movieTitle"
+          name="title"
+          placeholder="Enter movie title"
+          value="<%= query %>"
+          required
+        >
+      </div>
+
+      <div class="form-row">
+        <label for="movieYear">Release Year (optional)</label>
+        <input
+          type="text"
+          pattern="\d{4}"
+          maxlength="4"
+          id="movieYear"
+          name="year"
+          placeholder="e.g. 2006">
+      </div>
+
+      <button type="submit" >
+        Fetch from API
+      </button>
+    </form>
+  </section>
+</main>
+
+<script>
+  (function () {
+    const toggleBtn = document.getElementById('toggle-add-movie');
+    const form = document.getElementById('add-movie-form');
+    if (!toggleBtn || !form) return;
+
+    toggleBtn.addEventListener('click', () => {
+      form.classList.toggle('hidden');
+    });
+  })();
+</script>
+
+<%- include('./partials/footer') %>

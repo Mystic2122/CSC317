@@ -77,4 +77,88 @@ router.get('/home', async (req, res, next) => {
   }
 });
 
+router.get('/search', async (req, res, next) => {
+  try {
+    const query = req.query.q;
+
+    if (!query) {
+      return res.redirect('/home');
+    }
+
+    // Try to find the movie locally or fetch via your findMovieByTitle()
+    const results = await Movie.findLocalMovies(query);
+
+    res.render('search-results', {
+      title: 'Search Results',
+      query,
+      results,
+      isAuthenticated: req.session.user,
+      path: req.path
+    });
+
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.post('/movies/add-from-api', async (req, res, next) => {
+  try {
+    const title = (req.body.title || '').trim();
+    const yearRaw = (req.body.year || '').trim();
+    const year = yearRaw ? parseInt(yearRaw, 10) : undefined;
+
+    if (!title) {
+      return res.render('search-results', {
+        title: 'Search Results',
+        query: '',
+        results: [],
+        error: 'Movie title is required.',
+        isAuthenticated: req.session.user,
+        path: req.path
+      });
+    }
+
+    let results;
+    try {
+      results = await Movie.findMovieByTitle(title, year);
+    } catch (err) {
+      // Movie not found or API failed
+      return res.render('search-results', {
+        title: 'Search Results',
+        query: title,
+        results: [],
+        error: 'Movie not found.',
+        isAuthenticated: req.session.user,
+        path: req.path
+      });
+    }
+
+    if (!results || !results.length) {
+      return res.render('search-results', {
+        title: 'Search Results',
+        query: title,
+        results: [],
+        error: 'Movie not found.',
+        isAuthenticated: req.session.user,
+        path: req.path
+      });
+    }
+
+    // success → show search results page with new movie included
+    return res.render('search-results', {
+      title: 'Search Results',
+      query: title,
+      results,
+      error: null,
+      isAuthenticated: req.session.user,
+      path: req.path
+    });
+
+  } catch (err) {
+    next(err);
+  }
+});
+
+
+
 module.exports = router;

@@ -1,4 +1,42 @@
-<%- include('./partials/header') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> | Authentication Template</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+        <!-- SEARCH BAR -->
+      <form action="/search" method="GET" class="nav-search">
+        <input 
+          type="text" 
+          name="q" 
+          placeholder="Search movies..." 
+          class="search-input"
+          required
+        >
+        <button type="submit" class="search-btn">Search</button>
+      </form>
+
+      <ul class="nav-links">
+        <% if (isAuthenticated) { %>
+          <li><a href="/home" class="<%= path === '/home' ? 'active' : '' %>">Home</a></li>
+          <li><a href="/user/profile" class="<%= path === '/user/profile' ? 'active' : '' %>">Profile</a></li>
+          <li><a href="/user/settings" class="<%= path === '/user/settings' ? 'active' : '' %>">Settings</a></li>
+          <li><a href="/auth/logout">Logout</a></li>
+        <% } else { %>
+          <li><a href="/" class="<%= path === '/' ? 'active' : '' %>">Home</a></li>
+          <li><a href="/about" class="<%= path === '/about' ? 'active' : '' %>">About</a></li>
+          <li><a href="/auth/login" class="<%= path === '/auth/login' ? 'active' : '' %>">Login</a></li>
+          <li><a href="/auth/register" class="<%= path === '/auth/register' ? 'active' : '' %>">Register</a></li>
+        <% } %>
+      </ul>
+    </nav>
+  </header>
+
 
 <main>
   <div class="container home-container">
@@ -19,7 +57,6 @@
           <% trendingMovies.forEach(movie => { %>
             <article class="movie-card">
               <a href="/movies/<%= movie.id %>" class="movie-poster-link">
-                <div class="badge badge-quality">HD</div>
                 <% if (movie.image) { %>
                   <img src="<%= movie.image %>" alt="<%= movie.title %> poster" class="movie-poster">
                 <% } else { %>

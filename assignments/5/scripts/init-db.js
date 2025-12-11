@@ -69,11 +69,11 @@ const createTables = async () => {
       CREATE TABLE IF NOT EXISTS movies(
         id SERIAL PRIMARY KEY,
         title VARCHAR(63) NOT NULL,
-        year INT,
-        rating VARCHAR(7),
+        year INT NOT NULL,
+        rating VARCHAR(7) NOT NULL,
         genre VARCHAR(127),
         plot TEXT,
-        image VARCHAR(255)
+        image VARCHAR(255) NOT NULL
       )
     `); // Maybe add: director VARCHAR(127), language VARCHAR(31), rotten_tomatoes int
     
