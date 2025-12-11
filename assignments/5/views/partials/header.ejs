@@ -12,6 +12,18 @@
       <div class="logo">
         <a href="/">Auth Template</a>
       </div>
+
+      <form class="search-form" action="/search" method="GET">
+      <input
+        type="text"
+        name="q"
+        placeholder="Search for a movie..."
+        aria-label="Search for a movie"
+        required
+      >
+      <button type="submit">Search</button>
+    </form>
+    
       <ul class="nav-links">
         <% if (isAuthenticated) { %>
           <li><a href="/home" class="<%= path === '/home' ? 'active' : '' %>">Home</a></li>
