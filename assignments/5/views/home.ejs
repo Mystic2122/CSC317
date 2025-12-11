@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home Page</title>
-  <link rel="stylesheet" href="/public/css/home.css">
+  <link rel="stylesheet" href="/css/home.css">
 </head>
 
 <body>
@@ -14,17 +14,34 @@
         <a href="/">Movie Review</a>
       </div>
       <ul class="nav-links">
-        <li><a href="../home.ejs" class="{{#if (isActiveRoute path '/')}}active{{/if}}">Home</a></li>
-        <li><a href="./about" class="{{#if (isActiveRoute path '/about')}}active{{/if}}">About</a></li>
+
+        <li>
+          <a href="/home" class="<%= helpers.isActiveRoute(path, '/home') ? 'active' : '' %>">Home</a>
+        </li>
+
+        <li>
+          <a href="/about" class="<%= helpers.isActiveRoute(path, '/about') ? 'active' : '' %>">About</a>
+        </li>
         
-        {{#if isAuthenticated}}
-          <li><a href="../user/profile.ejs" class="{{#if (isActiveRoute path '/user/profile')}}active{{/if}}">Profile</a></li>
-          <li><a href="../user/settings" class="{{#if (isActiveRoute path '/user/settings')}}active{{/if}}">Settings</a></li>
-          <li><a href="../auth/logout">Logout</a></li>
-        {{else}}
-          <li><a href="../auth/login.ejs" class="{{#if (isActiveRoute path '/auth/login')}}active{{/if}}">Login</a></li>
-          <li><a href="../auth/register.ejs" class="{{#if (isActiveRoute path '/auth/register')}}active{{/if}}">Register</a></li>
-        {{/if}}
+        <% if (isAuthenticated) { %>
+          <li>
+            <a href="/user/profile" class="<%= helpers.isActiveRoute(path, '/user/profile') ? 'active' : '' %>">Profile</a>
+          </li>
+          <li>
+            <a href="/user/settings" class="<%= helpers.isActiveRoute(path, '/user/settings') ? 'active' : '' %>">Settings</a>
+          </li>
+          <li>
+            <a href="/auth/logout">Logout</a>
+          </li>
+        <% } else { %>
+          <li>
+            <a href="/auth/login" class="<%= helpers.isActiveRoute(path, '/auth/login') ? 'active' : '' %>">Login</a>
+          </li>
+          <li>
+            <a href="/auth/register" class="<%= helpers.isActiveRoute(path, '/auth/register') ? 'active' : '' %>">Register</a>
+          </li>
+        <% } %>
+
       </ul>
     </nav>
   </header>
@@ -32,68 +49,32 @@
   <main>
     <div class="container">
 
-      <div id ="featured">
+      <div id="featured">
         <h1>Featured Movie</h1>
         <p>Review the Most Current Featured Movie</p>
       </div>
 
       <h1>Trending Now</h1>
       <div id="movieContainer">
-        <div id="movieBox">
-            <h2>FNAF 2</h2>
-            <p>2026</p>
-        </div>
-
-        <div id="movieBox">
-            <h2>FNAF 2</h2>
-            <p>2026</p>
-        </div>
-
-        <div id="movieBox">
-            <h2>FNAF 2</h2>
-            <p>2026</p>
-        </div>
-
-        
-        
+        <div id="movieBox"><h2>FNAF 2</h2><p>2026</p></div>
+        <div id="movieBox"><h2>FNAF 2</h2><p>2026</p></div>
+        <div id="movieBox"><h2>FNAF 2</h2><p>2026</p></div>
       </div>
 
       <h1>Popular Movies</h1>
       <div id="movieContainer">
-        
-        
-        <div id="movieBox">
-          <div id="info">
-            <h2>FNAF 2</h2>
-            <p>2026</p>
-          </div>
-        </div>
-
-        <div id="movieBox">
-          <div id="info">
-            <h2>FNAF 2</h2>
-            <p>2026</p>
-          </div>
-        </div>
-
-        <div id="movieBox">
-          <div id="info">
-            <h2>FNAF 2</h2>
-            <p>2026</p>
-          </div>
-        </div>
-
+        <div id="movieBox"><div id="info"><h2>FNAF 2</h2><p>2026</p></div></div>
+        <div id="movieBox"><div id="info"><h2>FNAF 2</h2><p>2026</p></div></div>
+        <div id="movieBox"><div id="info"><h2>FNAF 2</h2><p>2026</p></div></div>
       </div>
 
     </div>
-
-
   </main>
 
   <footer>
-    <p>&copy; 2025 Movie Review | San Francisco State Univeristy</p>
+    <p>&copy; 2025 Movie Review | San Francisco State University</p>
   </footer>
 
-  <script src="/js/main.js"></script>
+  <script src="/js/home.js"></script>
 </body>
 </html>
