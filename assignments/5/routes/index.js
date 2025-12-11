@@ -5,6 +5,8 @@
 const express = require('express');
 const router = express.Router();
 const Movie = require('../models/Movie');
+const Review = require('../models/Review');
+const { isAuthenticated } = require('../middlewares/auth');
 
 // Root page route
 router.get('/', (req, res) => {
@@ -156,6 +158,102 @@ router.post('/movies/add-from-api', async (req, res, next) => {
       path: req.path
     });
 
+  } catch (err) {
+    next(err);
+  }
+});
+
+// Show all reviews by the logged-in user
+router.get('/my-reviews', isAuthenticated, async (req, res, next) => {
+  try {
+    const userId = req.session.user.id;
+
+    // Get all reviews + movie titles
+    const reviews = await Review.getUserReviewsWithMovieInfo(userId);
+
+    res.render('my-reviews', {
+      title: 'My Reviews',
+      isAuthenticated: req.session.user,
+      path: req.path,
+      reviews,
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+
+// Movie detail page with reviews and review form
+router.get('/movies/:id', async (req, res, next) => {
+  try {
+    const movieId = parseInt(req.params.id, 10);
+    if (isNaN(movieId)) {
+      return res.status(400).send('Invalid movie id');
+    }
+
+    const movie = await Movie.findById(movieId);
+    if (!movie) {
+      return res.status(404).send('Movie not found');
+    }
+
+    // All reviews for this movie
+    const reviews = await Review.getMovieReviewsWithUsers(movieId);
+
+    // Current user's review (if logged in)
+    let userReview = null;
+    if (req.session.user) {
+      userReview = await Review.getUserReviewForMovie(req.session.user.id, movieId);
+    }
+
+    res.render('review', {          // 👈 using review.ejs
+      title: movie.title,
+      movie,
+      reviews,
+      userReview,
+      isAuthenticated: req.session.user,
+      path: req.path,
+      reviewError: null,
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+
+// Create or update review for a movie
+router.post('/movies/:id/review', isAuthenticated, async (req, res, next) => {
+  try {
+    const movieId = parseInt(req.params.id, 10);
+    if (isNaN(movieId)) {
+      return res.status(400).send('Invalid movie id');
+    }
+
+    const reviewText = (req.body.review || '').trim();
+
+    if (!reviewText) {
+      // Re-render page with error
+      const movie = await Movie.findById(movieId);
+      if (!movie) {
+        return res.status(404).send('Movie not found');
+      }
+
+      const reviews = await Review.getMovieReviewsWithUsers(movieId);
+      const userReview = await Review.getUserReviewForMovie(req.session.user.id, movieId);
+
+      return res.render('review', {
+        title: movie.title,
+        movie,
+        reviews,
+        userReview,
+        isAuthenticated: req.session.user,
+        path: req.path,
+        reviewError: 'Review cannot be empty.',
+      });
+    }
+
+    // Insert or update the review
+    await Review.upsert(req.session.user.id, movieId, reviewText);
+
+    // Redirect back to the movie page
+    return res.redirect(`/movies/${movieId}`);
   } catch (err) {
     next(err);
   }

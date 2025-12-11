@@ -1,0 +1,52 @@
+<%- include('./partials/header') %>
+
+<main class="container home-container">
+  <section class="section">
+    <h1 class="section-title">My Reviews</h1>
+    <p class="section-subtitle">All the movies you've reviewed.</p>
+  </section>
+
+  <% if (!reviews || !reviews.length) { %>
+    <p>You haven’t reviewed any movies yet. Go to <a href="/home">Home</a> and pick a movie to review!</p>
+  <% } else { %>
+    <section class="section">
+      <div class="movie-grid">
+        <% reviews.forEach(r => { %>
+          <article class="movie-card">
+            <a href="/movies/<%= r.movie_id %>" class="movie-poster-link">
+              <% if (r.image) { %>
+                <img
+                  src="<%= r.image %>"
+                  alt="<%= r.movie_title %> poster"
+                  class="movie-poster"
+                >
+              <% } else { %>
+                <div class="movie-poster placeholder">No Image</div>
+              <% } %>
+            </a>
+
+            <div class="movie-meta">
+              <h3 class="movie-title">
+                <a href="/movies/<%= r.movie_id %>"><%= r.movie_title %></a>
+              </h3>
+
+              <p class="movie-sub">
+                <span><%= r.year || 'N/A' %></span>
+                <span>•</span>
+                <span><%= new Date(r.created_at).toLocaleDateString() %></span>
+              </p>
+
+              <p class="movie-extra"><%= r.review %></p>
+
+              <% if (r.edited) { %>
+                <span class="edited-label">edited</span>
+              <% } %>
+            </div>
+          </article>
+        <% }) %>
+      </div>
+    </section>
+  <% } %>
+</main>
+
+<%- include('./partials/footer') %>

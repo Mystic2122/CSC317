@@ -44,9 +44,59 @@ const getReviewsByMovie = async(movieId) => {
     return result.rows
 };
 
+// Get all reviews for a user, including movie titles
+const getUserReviewsWithMovieInfo = async (userId) => {
+  const result = await query(
+    `SELECT r.review,
+            r.created_at,
+            r.edited,
+            m.id AS movie_id,
+            m.title AS movie_title,
+            m.year,
+            m.image
+     FROM reviews r
+     JOIN movies m ON r.movie_id = m.id
+     WHERE r.user_id = $1
+     ORDER BY r.created_at DESC`,
+    [userId]
+  );
+  return result.rows;
+};
+
+
+// Get this user's review for a specific movie (if any)
+const getUserReviewForMovie = async (userId, movieId) => {
+  const result = await query(
+    `SELECT review, created_at, edited
+     FROM reviews
+     WHERE user_id = $1 AND movie_id = $2`,
+    [userId, movieId]
+  );
+  return result.rows[0] || null;
+};
+
+// Get all reviews for a movie, including username
+const getMovieReviewsWithUsers = async (movieId) => {
+  const result = await query(
+    `SELECT r.review,
+            r.created_at,
+            r.edited,
+            u.username
+     FROM reviews r
+     JOIN users u ON r.user_id = u.id
+     WHERE r.movie_id = $1
+     ORDER BY r.created_at DESC`,
+    [movieId]
+  );
+  return result.rows;
+};
+
 
 module.exports = {
     upsert,
     getReviewsByUser,
-    getReviewsByMovie
+    getReviewsByMovie,
+    getUserReviewsWithMovieInfo,
+    getUserReviewForMovie,
+    getMovieReviewsWithUsers,
 };

@@ -164,6 +164,18 @@ const findLocalMovies = async (title) => {
   return result.rows;
 };
 
+// Get a single movie by id
+const findById = async (id) => {
+  const result = await query(
+    `SELECT id, title, year, rating, genre, plot, image
+     FROM movies
+     WHERE id = $1`,
+    [id]
+  );
+  return result.rows[0] || null;
+};
+
+
 module.exports = {
     insert,
     findMovieByTitle,
@@ -171,6 +183,7 @@ module.exports = {
     getTrendingMovies,
     getAdditionalMovies,
     findLocalMovies,
+    findById,
 };
 
 

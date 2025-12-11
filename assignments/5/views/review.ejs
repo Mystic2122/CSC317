@@ -1,0 +1,89 @@
+<%- include('./partials/header') %>
+
+<main class="container home-container">
+  <!-- Movie info -->
+  <section class="section">
+    <article class="movie-card movie-card-featured">
+      <div class="movie-poster-link">
+        <% if (movie.image) { %>
+          <img src="<%= movie.image %>" alt="<%= movie.title %> poster" class="movie-poster featured-poster">
+        <% } else { %>
+          <div class="movie-poster placeholder featured-poster">No Image</div>
+        <% } %>
+      </div>
+
+      <div class="movie-meta featured-meta">
+        <h1 class="movie-title"><%= movie.title %></h1>
+        <p class="movie-sub">
+          <span><%= movie.year || 'N/A' %></span>
+          <span>•</span>
+          <span><%= movie.rating || 'NR' %></span>
+          <% if (movie.genre) { %>
+            <span>•</span>
+            <span><%= movie.genre %></span>
+          <% } %>
+        </p>
+
+        <% if (movie.plot) { %>
+          <p class="movie-plot"><%= movie.plot %></p>
+        <% } %>
+      </div>
+    </article>
+  </section>
+
+  <!-- Review form -->
+  <section class="section">
+    <h2 class="section-title">Your Review</h2>
+
+    <% if (!isAuthenticated) { %>
+      <p>You must <a href="/auth/login">log in</a> to leave a review.</p>
+    <% } else { %>
+      <% if (reviewError) { %>
+        <div class="error-message"><%= reviewError %></div>
+      <% } %>
+
+      <form action="/movies/<%= movie.id %>/review" method="POST" class="review-form">
+        <textarea
+          name="review"
+          rows="4"
+          placeholder="Write your thoughts about this movie..."
+          required
+        ><%= userReview ? userReview.review : '' %></textarea>
+
+        <button type="submit" class="fetch-btn">
+          Save Review
+        </button>
+      </form>
+
+      <p class="review-note">
+        You can update your review at any time. Saving again will overwrite your previous review.
+      </p>
+    <% } %>
+  </section>
+
+  <!-- All reviews -->
+  <section class="section">
+    <h2 class="section-title">All Reviews</h2>
+
+    <% if (reviews && reviews.length) { %>
+      <ul class="reviews-list">
+        <% reviews.forEach(r => { %>
+          <li class="review-item">
+            <div class="review-header">
+              <strong><%= r.username %></strong>
+              <span class="review-meta">
+                <%= new Date(r.created_at).toLocaleDateString() %>
+                <% if (r.edited) { %> · edited <% } %>
+              </span>
+            </div>
+            <p class="review-text"><%= r.review %></p>
+          </li>
+        <% }) %>
+      </ul>
+    <% } else { %>
+      <p>No reviews yet. Be the first to review this movie!</p>
+    <% } %>
+  </section>
+</main>
+
+<%- include('./partials/footer') %>
