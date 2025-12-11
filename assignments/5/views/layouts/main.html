@@ -13,17 +13,17 @@
         <a href="/">Movie Review</a>
       </div>
       <ul class="nav-links">
-        <li><a href="../home.ejs" class="{{#if (isActiveRoute path '/')}}active{{/if}}">Home</a></li>
-        <li><a href="/about" class="{{#if (isActiveRoute path '/about')}}active{{/if}}">About</a></li>
-        
-        {{#if isAuthenticated}}
-          <li><a href="../user/profile.ejs" class="{{#if (isActiveRoute path '/user/profile')}}active{{/if}}">Profile</a></li>
-          <li><a href="../user/settings" class="{{#if (isActiveRoute path '/user/settings')}}active{{/if}}">Settings</a></li>
-          <li><a href="../auth/logout">Logout</a></li>
-        {{else}}
-          <li><a href="../auth/login.ejs" class="{{#if (isActiveRoute path '/auth/login')}}active{{/if}}">Login</a></li>
-          <li><a href="../auth/register.ejs" class="{{#if (isActiveRoute path '/auth/register')}}active{{/if}}">Register</a></li>
-        {{/if}}
+        <% if (isAuthenticated) { %>
+          <li><a href="/home" class="<%= path === '/home' ? 'active' : '' %>">Home</a></li>
+          <li><a href="/user/profile" class="<%= path === '/user/profile' ? 'active' : '' %>">Profile</a></li>
+          <li><a href="/user/settings" class="<%= path === '/user/settings' ? 'active' : '' %>">Settings</a></li>
+          <li><a href="/auth/logout">Logout</a></li>
+        <% } else { %>
+          <li><a href="/" class="<%= path === '/' ? 'active' : '' %>">Home</a></li>
+          <li><a href="/about" class="<%= path === '/about' ? 'active' : '' %>">About</a></li>
+          <li><a href="/auth/login" class="<%= path === '/auth/login' ? 'active' : '' %>">Login</a></li>
+          <li><a href="/auth/register" class="<%= path === '/auth/register' ? 'active' : '' %>">Register</a></li>
+        <% } %>
       </ul>
     </nav>
   </header>

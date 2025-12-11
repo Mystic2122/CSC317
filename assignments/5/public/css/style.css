@@ -7,6 +7,10 @@
   box-sizing: border-box;
 }
 
+/*
+Changed Items
+*/
+
 :root {
   --primary-color: #009688;
   --primary-dark: #00796b;
@@ -95,6 +99,73 @@ header {
 .nav-links a:hover, .nav-links a.active {
   color: var(--primary-color);
 }
+
+/****************************************/
+/*Movies*/
+
+#movie-about {
+    padding: 100px;
+    background: linear-gradient(160deg, #1e1e1e, #2e2e2e);
+    background-color: var(--background-color);
+    box-shadow: var(--shadow);
+}
+
+.movie-section {
+  margin: 0 auto;
+  padding: 20px;
+}
+
+#movieSearch {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px 20px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 30px;
+  background-color: #f8f8f8;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+#movieContainer {
+    padding: 10px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+#movieBox {
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    
+    margin: 10px;
+    border-radius: 21px;
+    background: linear-gradient(160deg, rgb(119, 0, 0), #3d0000);
+    width: 200px;
+    height: 300px;
+    overflow: hidden;
+
+    box-shadow: var(--shadow);
+    transition: all 0.4s ease;
+}
+
+#movieBox h1, #movieBox p {
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    
+    margin: 10px;
+    width: 200px;
+    height: 300px;
+}
+
+#movieBox:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 1);
+}
+
+/****************************************/
 
 /* 
  * Footer 
@@ -401,7 +472,7 @@ input:focus {
 }
 
 .profile-card {
-  background-color: var(--white);
+  background-color: var(--background-color);
   border-radius: 8px;
   box-shadow: var(--shadow);
   padding: 2rem;
@@ -464,9 +535,10 @@ input:focus {
 }
 
 .profile-section, .settings-section {
-  background-color: var(--white);
-  border-radius: 8px;
-  box-shadow: var(--shadow);
+  margin: 20px;
+  background-color: var(--background-color);
+  border-radius: 15px;
+  box-shadow: 0px 1px 8px rgba(0, 0, 0, 1);
   padding: 2rem;
 }
 
