@@ -34,15 +34,15 @@ router.get('/home', async (req, res, next) => {
   try {
     // 1) Get trending and popular lists
     const [trendingMoviesRaw, popularMoviesRaw] = await Promise.all([
-      Movie.getTrendingMovies(8),   // top by reviews this week
-      Movie.getPopularMovies(8),   // top by reviews all time (includes 0-review movies)
+      Movie.getTrendingMovies(21),   // top by reviews this week
+      Movie.getPopularMovies(21),   // top by reviews all time (includes 0-review movies)
     ]);
 
     // 2) De-duplicate movies between trending & popular
     const trendingIds = trendingMoviesRaw.map(m => m.id);
 
     const trendingMovies = trendingMoviesRaw;
-    const popularMovies = popularMoviesRaw.filter(m => !trendingIds.includes(m.id));
+    const popularMovies = popularMoviesRaw;
 
     // 3) Ensure we have at least 10 total unique movies
     const totalSoFar = trendingMovies.length + popularMovies.length;
