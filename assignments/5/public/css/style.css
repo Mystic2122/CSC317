@@ -123,7 +123,8 @@ header {
 
 .movie-section {
   margin: 0 auto;
-  padding: 20px;
+  padding: 50px;
+  box-shadow: var(--shadow);
 }
 
 #movieSearch {
@@ -143,16 +144,14 @@ header {
 #movie-card {
   margin: 10px;
   border-radius: 21px;
-
-  box-shadow: var(--shadow);
   transition: all 0.4s ease;
 }
   
 
 #movie-card img {
   margin: 10px;
-  border-radius: 21px;
-  width: 50%;
+  border-radius: 25px;
+  width: 75%;
   height: auto;
   box-shadow: var(--shadow);
   transition: all 0.4s ease;
