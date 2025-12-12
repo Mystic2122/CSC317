@@ -106,8 +106,6 @@ header {
 
 .section {
   padding: 25px;
-  width: auto;
-  height: auto;
   box-shadow: var(--shadow);
   margin-top: 25px;
 }
@@ -116,7 +114,9 @@ header {
   display: grid;
   grid-template-columns: repeat(5, 1fr);  
   gap: 50px;
-  padding: auto;      
+  padding: auto;
+  width: auto;
+  height: auto;      
   padding-bottom: 15px;  
 }
 
