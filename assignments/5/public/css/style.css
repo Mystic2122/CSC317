@@ -236,6 +236,10 @@ header {
   font-size: 20px;
 }
 
+.add-movie-section #btn primary-btn  {
+  margin-top: 15px;
+}
+
 /****************************************/
 
 /* 

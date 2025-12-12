@@ -44,10 +44,11 @@
   <!--Here we are looking for the movie-->
   <section class="add-movie-section">
     
+    <div id="searchText"><br>Don’t see your movie?</div>
 
     <form id="add-movie-form" class="add-movie-form hidden" action="/movies/add-from-api" method="POST">
       <div class="form-row">
-        <div><br>Don’t see your movie?</div>
+        
         <label for="movieTitle"><br>Movie Title</label>
         <input
           type="text"
@@ -70,6 +71,8 @@
           placeholder="e.g. 2006">
       </div>
     </form>
+
+    <button id="btn primary-btn" type="submit">Search</button>
   </section>
 </main>
 
