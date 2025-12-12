@@ -134,11 +134,11 @@ header {
   display:flex;
   flex-direction: column;
   justify-content: flex-end;
-    
+  
+  height: auto;
+  width: auto;
   margin: 10px;
   border-radius: 21px;
-  width: 200px;
-  height: 300px;
 
   box-shadow: var(--shadow);
   transition: all 0.4s ease;
@@ -146,9 +146,21 @@ header {
   
 #movie-card img {
   margin: 10px;
+  width: 200px;
+  height: 300px;
   border-radius: 15px;
   box-shadow: var(--shadow);
   transition: all 0.4s ease;
+}
+
+.movie-meta{
+  font-size: 12;
+  font: #ffffff
+
+}
+#movieTitle a {
+  font-size: 18px;
+  font: var(--primary-dark);
 }
 
 #movie-card:hover {
