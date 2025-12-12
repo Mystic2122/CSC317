@@ -34,8 +34,8 @@ router.get('/home', async (req, res, next) => {
   try {
     // 1) Get trending and popular lists
     const [trendingMoviesRaw, popularMoviesRaw] = await Promise.all([
-      Movie.getTrendingMovies(5),   // top by reviews this week
-      Movie.getPopularMovies(10),   // top by reviews all time (includes 0-review movies)
+      Movie.getTrendingMovies(8),   // top by reviews this week
+      Movie.getPopularMovies(8),   // top by reviews all time (includes 0-review movies)
     ]);
 
     // 2) De-duplicate movies between trending & popular

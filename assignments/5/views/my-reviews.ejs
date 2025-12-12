@@ -9,7 +9,6 @@
   <% if (!reviews || !reviews.length) { %>
     <p>You haven’t reviewed any movies yet. Go to <a href="/home">Home</a> and pick a movie to review!</p>
   <% } else { %>
-    <section class="section">
       <div class="movie-grid">
         <% reviews.forEach(r => { %>
           <article id="movie-card">
@@ -45,7 +44,6 @@
           </article>
         <% }) %>
       </div>
-    </section>
   <% } %>
 </main>
 

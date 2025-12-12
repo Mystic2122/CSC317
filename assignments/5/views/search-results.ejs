@@ -13,12 +13,12 @@
     <% if (results && results.length) { %>
 
       <% results.forEach(movie => { %>
-        <article class="movie-card">
-          <a href="/movies/<%= movie.id %>" class="movie-poster-link">
+        <article id="movie-card">
+          <a href="/movies/<%= movie.id %>" id="movie-poster">
             <% if (movie.image) { %>
-              <img src="<%= movie.image %>" class="movie-poster" alt="<%= movie.title %>">
+              <img src="<%= movie.image %>" id="movie-poster" alt="<%= movie.title %>">
             <% } else { %>
-              <div class="movie-poster placeholder">No Image</div>
+              <div id="movie-poster">No Image</div>
             <% } %>
           </a>
 
@@ -26,12 +26,12 @@
             <h3 class="movie-title">
               <a href="/movies/<%= movie.id %>"><%= movie.title %></a>
             </h3>
-            <p class="movie-sub">
+            <p>
               <span><%= movie.year || 'N/A' %></span>
               <span>•</span>
               <span><%= movie.rating || 'NR' %></span>
             </p>
-            <p class="movie-extra"><%= movie.genre %></p>
+            <p><%= movie.genre %></p>
           </div>
         </article>
       <% }) %>
@@ -41,14 +41,13 @@
     <% } %>
   </div>
 
-  <!-- Don't see your movie? -->
+  <!--Here we are looking for the movie-->
   <section class="add-movie-section">
-    <div><br>Don’t see your movie?</div>
-      
-
+    
 
     <form id="add-movie-form" class="add-movie-form hidden" action="/movies/add-from-api" method="POST">
       <div class="form-row">
+        <div><br>Don’t see your movie?</div>
         <label for="movieTitle"><br>Movie Title</label>
         <input
           type="text"

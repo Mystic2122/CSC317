@@ -219,6 +219,18 @@ header {
   box-shadow: 0px 1px 8px rgba(0, 0, 0, 1);
 }
 
+.movie-plot {
+  margin-top: 15px;
+}
+
+#add-movie-form .form-row{
+  font-size: 18px;
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 15px;
+  box-shadow: 0px 1px 8px rgba(0, 0, 0, 1);
+}
+
 /****************************************/
 
 /* 
@@ -581,7 +593,7 @@ input:focus {
 .profile-card {
   background-color: var(--background-color);
   border-radius: 8px;
-  box-shadow: var(--shadow);
+  box-shadow: 0px 1px 8px rgba(0, 0, 0, 1);
   padding: 2rem;
   margin-bottom: 2rem;
 }
