@@ -113,7 +113,8 @@ header {
 .movie-grid {
   display: grid;
   grid-template-columns: repeat(8, 1fr);  
-  gap: 100px;      
+  gap: 200px;
+  padding: 25px;      
   padding-bottom: 15px;  
 }
 
@@ -130,15 +131,13 @@ header {
 }
 
 #movie-card {
-  border-radius: 15px;
   transition: all 0.4s ease;
 }
   
 #movie-card img {
   margin: 10px;
-  padding: 20px;
   border-radius: 15px;
-  width: 125%;
+  width: 200%;
   height: auto;
   box-shadow: var(--shadow);
   transition: all 0.4s ease;
