@@ -114,7 +114,7 @@ header {
   display: grid;
   grid-template-columns: repeat(8, 1fr);  
   gap: 200px;
-  padding: 25px;      
+  padding: auto;      
   padding-bottom: 15px;  
 }
 
