@@ -89,7 +89,7 @@ const findMovieByTitle = async (title, year) => {
 
 
 // Get most-reviewed movies of all time (popular), including movies with 0 reviews
-const getPopularMovies = async (limit = 10) => {
+const getPopularMovies = async (limit = 8) => {
   const result = await query(
     `SELECT
        m.id,
@@ -112,7 +112,7 @@ const getPopularMovies = async (limit = 10) => {
 
 // Get most-reviewed movies in the last 7 days (trending)
 // This only includes movies that HAVE reviews this week
-const getTrendingMovies = async (limit = 5) => {
+const getTrendingMovies = async (limit = 8) => {
   const result = await query(
     `SELECT
        m.id,

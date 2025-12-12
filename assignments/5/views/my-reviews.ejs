@@ -1,6 +1,6 @@
 <%- include('./partials/header') %>
 
-<main class="container home-container">
+<main class="container">
   <section class="section">
     <h1 class="section-title">My Reviews</h1>
     <p class="section-subtitle">All the movies you've reviewed.</p>
@@ -12,8 +12,8 @@
     <section class="section">
       <div class="movie-grid">
         <% reviews.forEach(r => { %>
-          <article class="movie-card">
-            <a href="/movies/<%= r.movie_id %>" class="movie-poster-link">
+          <article id="movie-card">
+            <a href="/movies/<%= r.movie_id %>">
               <% if (r.image) { %>
                 <img
                   src="<%= r.image %>"
@@ -21,7 +21,7 @@
                   id="movie-poster"
                 >
               <% } else { %>
-                <div id="movie-poster placeholder">No Image</div>
+                <div id="movie-poster">No Image</div>
               <% } %>
             </a>
 
