@@ -104,20 +104,20 @@ header {
 /****************************************/
 /*Movies*/
 
+.section {
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+
 .movie-grid {
   display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 150px;
-  gap: 200px;
-
-  overflow-x: auto;          
+  grid-template-columns: repeat(8, 1fr);        
   padding-bottom: 15px;  
 }
 
 .movie-section {
   margin: 0 auto;
   padding: 50px;
-  box-shadow: var(--shadow);
 }
 
 #movieSearch {
@@ -140,7 +140,7 @@ header {
 #movie-card img {
   margin: 10px;
   border-radius: 15px;
-  width: 250%;
+  width: 125%;
   height: auto;
   box-shadow: var(--shadow);
   transition: all 0.4s ease;
