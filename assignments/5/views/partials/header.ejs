@@ -17,15 +17,6 @@
     
       <ul class="nav-links">
         <% if (isAuthenticated) { %>
-            <form class="search-form" action="/search" method="GET">
-              <input
-                type="text"
-                name="q"
-                placeholder="Search for a movie..."
-                aria-label="Search for a movie"
-                required>
-            </form>
-
           <li><a href="/home" class="<%= path === '/home' ? 'active' : '' %>">Home</a></li>
           <li><a href="/my-reviews" class="<%= path === '/my-reviews' ? 'active' : '' %>">My Reviews</a></li>
           <li><a href="/user/profile" class="<%= path === '/user/profile' ? 'active' : '' %>">Profile</a></li>
