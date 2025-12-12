@@ -108,7 +108,7 @@ header {
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: 150px;
-  gap: 150px;
+  gap: 200px;
 
   overflow-x: auto;          
   padding-bottom: 15px;  
@@ -138,35 +138,27 @@ header {
   box-sizing: border-box;
 }
 
-#movieContainer {
-  padding: 10px;
-  display: flex;
-  text-align: center;
-  align-items: center;
-}
+
 
 #movie-card {
   margin: 10px;
   border-radius: 21px;
-  width: 75%;
-  height: auto;
 
   box-shadow: var(--shadow);
   transition: all 0.4s ease;
 }
+  
 
-#movieBox h1,
-#movieBox p {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-
+#movie-card img {
   margin: 10px;
-  width: 200px;
-  height: 300px;
+  border-radius: 21px;
+  width: 50%;
+  height: auto;
+  box-shadow: var(--shadow);
+  transition: all 0.4s ease;
 }
 
-#movieBox:hover {
+#movie-card:hover {
   transform: scale(1.05);
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 1);
 }
