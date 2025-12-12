@@ -117,8 +117,8 @@ header {
 
 .movie-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);  
-  gap: 50px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));  
+  gap: 30px;
   padding: 25px;
   width: auto;
   height: auto;
