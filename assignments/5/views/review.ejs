@@ -89,8 +89,8 @@
       <% if (reviews && reviews.length) { %>
         <ul class="reviews-list">
           <% reviews.forEach(r=> { %>
-            <li class="review-item">
-              <div class="review-header">
+            <div id="review-item">
+              <div id="review-header">
                 <strong>
                   <%= r.username %>
                 </strong>
@@ -102,7 +102,7 @@
               <p class="review-text">
                 <%= r.review %>
               </p>
-            </li>
+            </div>
             <% }) %>
         </ul>
         <% } else { %>
