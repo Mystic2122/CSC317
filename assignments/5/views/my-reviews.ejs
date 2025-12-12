@@ -18,19 +18,19 @@
                 <img
                   src="<%= r.image %>"
                   alt="<%= r.movie_title %> poster"
-                  class="movie-poster"
+                  id="movie-poster"
                 >
               <% } else { %>
-                <div class="movie-poster placeholder">No Image</div>
+                <div id="movie-poster placeholder">No Image</div>
               <% } %>
             </a>
 
             <div class="movie-meta">
-              <h3 class="movie-title">
+              <h3>
                 <a href="/movies/<%= r.movie_id %>"><%= r.movie_title %></a>
               </h3>
 
-              <p class="movie-sub">
+              <p>
                 <span><%= r.year || 'N/A' %></span>
                 <span>•</span>
                 <span><%= new Date(r.created_at).toLocaleDateString() %></span>
