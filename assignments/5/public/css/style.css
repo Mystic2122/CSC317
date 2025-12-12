@@ -106,6 +106,8 @@ header {
 
 .section {
   padding: 25px;
+  width: auto;
+  height: auto;
   box-shadow: var(--shadow);
   margin-top: 25px;
 }
@@ -113,7 +115,7 @@ header {
 .movie-grid {
   display: grid;
   grid-template-columns: repeat(8, 1fr);  
-  gap: 200px;
+  gap: 50px;
   padding: auto;      
   padding-bottom: 15px;  
 }
@@ -133,7 +135,8 @@ header {
 #movie-card {
   display:flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
+  align-items: center;
   
   height: auto;
   width: auto;
