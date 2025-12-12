@@ -38,15 +38,15 @@
                 <h3>
                   <a href="/movies/<%= movie.id %>"><%= movie.title %></a>
                 </h3>
-                <p class="movie-sub">
+                <p>
                   <span><%= movie.year || 'N/A' %></span>
                   <span>•</span>
                   <span><%= movie.rating || 'NR' %></span>
                 </p>
-                <p class="movie-extra">
+                <p>
                   🔥 <%= movie.review_count_week %> reviews this week
                 </p>
-                <span class="movie-pill">Movie</span>
+                <span>Movie</span>
               </div>
             </article>
           <% }) %>
@@ -64,13 +64,13 @@
       <div class="movie-grid">
         <% if (popularMovies && popularMovies.length) { %>
           <% popularMovies.forEach(movie => { %>
-            <article class="movie-card">
+            <article id="movie-card">
               <a href="/movies/<%= movie.id %>" class="movie-poster-link">
 
                 <% if (movie.image) { %>
                   <img src="<%= movie.image %>" alt="<%= movie.title %> poster" class="movie-poster">
                 <% } else { %>
-                  <div class="movie-poster placeholder">No Image</div>
+                  <p>No Image</p>
                 <% } %>
               </a>
 

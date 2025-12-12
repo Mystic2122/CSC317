@@ -114,13 +114,6 @@ header {
   padding-bottom: 15px;  
 }
 
-#movie-about {
-  padding: 100px;
-  background: linear-gradient(160deg, #1e1e1e, #2e2e2e);
-  background-color: var(--background-color);
-  box-shadow: var(--shadow);
-}
-
 .movie-section {
   margin: 0 auto;
   padding: 50px;
@@ -139,19 +132,17 @@ header {
   box-sizing: border-box;
 }
 
-
-
 #movie-card {
-  margin: 10px;
-  border-radius: 21px;
+  margin: 15px;
+  padding: 30px;
+  border-radius: 15px;
   transition: all 0.4s ease;
 }
   
-
 #movie-card img {
   margin: 10px;
   border-radius: 25px;
-  width: 75%;
+  width: 100%;
   height: auto;
   box-shadow: var(--shadow);
   transition: all 0.4s ease;
@@ -160,6 +151,18 @@ header {
 #movie-card:hover {
   transform: scale(1.05);
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 1);
+}
+
+.movie-meta {
+  padding: 10px 0;
+  color: #ffffff;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+#movieTitle{
+  font-size: 18px;
+  text-decoration: none;
 }
 
 /****************************************/
