@@ -141,8 +141,8 @@ header {
   
 #movie-card img {
   margin: 10px;
-  border-radius: 25px;
-  width: 100%;
+  border-radius: 15px;
+  width: 25%;
   height: auto;
   box-shadow: var(--shadow);
   transition: all 0.4s ease;
