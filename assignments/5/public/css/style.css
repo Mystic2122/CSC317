@@ -106,13 +106,14 @@ header {
 
 .section {
   padding: 25px;
-  box-shadow: var(--shadow);
+  border-radius: 25px;
+  box-shadow: 0px 1px 8px rgba(0, 0, 0, 1);
   margin-top: 25px;
 }
 
 .movie-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);  
+  grid-template-columns: repeat(4, 1fr);  
   gap: 50px;
   padding: auto;
   width: auto;
@@ -149,8 +150,8 @@ header {
   
 #movie-card img {
   margin: 10px;
-  width: 100px;
-  height: 150px;
+  width: 200px;
+  height: 300px;
   border-radius: 15px;
   box-shadow: var(--shadow);
   transition: all 0.4s ease;
