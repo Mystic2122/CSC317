@@ -179,11 +179,6 @@ header {
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 1);
 }
 
-#movie-card:active {
-  transform: scale(0.90);
-}
-  
-
 .movie-meta {
   padding: 10px 0;
   color: #ffffff;
@@ -249,10 +244,6 @@ header {
 
 #searchButton:hover {
   background-color: var(--primary-dark);
-}
-
-#searchButton:active {
-  transform: scale(0.90);
 }
 
 /****************************************/
@@ -349,10 +340,6 @@ input:focus {
   transform: translateY(-2px);
 }
 
-.btn:hover:active {
-  transform: scale(0.90);
-}
-
 .primary-btn {
   background-color: var(--primary-color);
   color: var(--white);
@@ -362,9 +349,6 @@ input:focus {
   background-color: var(--primary-dark);
 }
 
-.primary-btn:active {
-  transform: scale(0.90);
-}
 
 .secondary-btn {
   background-color: var(--secondary-color);
@@ -373,10 +357,6 @@ input:focus {
 
 .secondary-btn:hover {
   background-color: var(--secondary-dark);
-}
-
-.secondary-btn:active {
-  transform: scale(0.90);
 }
 
 .action-buttons {
@@ -413,20 +393,12 @@ input:focus {
   transform: translateY(-2px);
 }
 
-.fetch-btn:active {
-  transform: scale(0.90);
-}
-
 .fetch-btn.delete-btn {
   background-color: var(--error-color);
 }
 
 .fetch-btn.delete-btn:hover {
   background-color: #c0392b;
-}
-
-.fetch-btn.delete-btn:active {
-  transform: scale(0.90);
 }
 
 .char-counter {
