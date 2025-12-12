@@ -1,6 +1,6 @@
 <%- include('./partials/header') %>
 
-  <main class="container home-container">
+  <main class="container">
     <!-- Movie info -->
     <section class="section">
       <article >
@@ -8,7 +8,7 @@
           <% if (movie.image) { %>
             <img src="<%= movie.image %>" alt="<%= movie.title %> poster" id="movie-poster">
             <% } else { %>
-              <div class="movie-poster">No Image</div>
+              <div id="movie-poster">No Image</div>
               <% } %>
         </div>
 
@@ -33,6 +33,7 @@
           </p>
 
           <% if (movie.plot) { %>
+            <p>Plot:</p>
             <p class="movie-plot">
               <%= movie.plot %>
             </p>
