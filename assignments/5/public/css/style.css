@@ -188,9 +188,11 @@ header {
   border-radius: 15px;
 }
 
-.review-form{
-  border: solid 1px var(--second-color);
+.reviewText{
+  width: auto;
+  height: auto;
   border-radius: 15px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 1);
 }
 
 /****************************************/
