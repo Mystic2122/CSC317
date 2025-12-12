@@ -75,7 +75,7 @@
               </a>
 
               <div class="movie-meta">
-                <h3 class="movie-title">
+                <h3>
                   <a href="/movies/<%= movie.id %>"><%= movie.title %></a>
                 </h3>
                 <p class="movie-sub">
@@ -83,10 +83,8 @@
                   <span>•</span>
                   <span><%= movie.rating || 'NR' %></span>
                 </p>
-                <p class="movie-extra">
-                  ⭐ <%= movie.review_count_all || 0 %> total reviews
-                </p>
-                <span class="movie-pill">Movie</span>
+                <p>⭐ <%= movie.review_count_all || 0 %> total reviews</p>
+                <span>Movie</span>
               </div>
             </article>
           <% }) %>

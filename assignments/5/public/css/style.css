@@ -113,7 +113,7 @@ header {
 .movie-grid {
   display: grid;
   grid-template-columns: repeat(8, 1fr);  
-  gap: 75px;      
+  gap: 100px;      
   padding-bottom: 15px;  
 }
 
