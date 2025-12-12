@@ -71,11 +71,6 @@ const findMovieByTitle = async (title, year) => {
     throw new Error("Failed to fetch movie from OMDb");
   }
 
-  if (!image || image === 'N/A' || image.trim() === '') {
-    console.log("Movie has no valid poster. Skipping insert for:", newTitle);
-    throw new Error("Movie has no poster (No relevant movies found)");
-  }
-
   const newTitle = newMovie['Title'];
   let yearVal = parseInt(newMovie["Year"]);
   if (isNaN(yearVal)) {
@@ -86,6 +81,11 @@ const findMovieByTitle = async (title, year) => {
   const genre = newMovie['Genre'];
   const plot = newMovie['Plot'];
   const image = newMovie['Poster'];
+
+  if (!image || image === 'N/A' || image.trim() === '') {
+    console.log("Movie has no valid poster. Skipping insert for:", newTitle);
+    throw new Error("Movie has no poster (No relevant movies found)");
+  }
 
   const newRow = await insert(newTitle, yearVal, rating, genre, plot, image);
   console.log("Saved movie to DB from API");
