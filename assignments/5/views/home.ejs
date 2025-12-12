@@ -6,8 +6,8 @@
 
     <!-- Featured Movie -->
     <section class="section featured-section">
-      <h1 class="section-title">Search For Your Favorite Movies</h1>
-      <form class="search-form" action="/search" method="GET">
+      <h1 class="search-bar">Search For Your Favorite Movies</h1>
+      <form action="/search" method="GET">
               <input
                 type="text"
                 name="q"
@@ -19,13 +19,13 @@
 
     <!-- Trending -->
     <section class="section">
-      <h2 class="section-title">Trending Now</h2>
-      <p class="section-subtitle">Based on reviews from the last 7 days</p>
+      <h2>Trending Now</h2>
+      <p">Based on reviews from the last 7 days</p>
 
       <div class="movie-grid">
         <% if (trendingMovies && trendingMovies.length) { %>
           <% trendingMovies.forEach(movie => { %>
-            <article class="movie-card">
+            <article id="movie-card">
               <a href="/movies/<%= movie.id %>" class="movie-poster-link">
                 <% if (movie.image) { %>
                   <img src="<%= movie.image %>" alt="<%= movie.title %> poster" class="movie-poster">
@@ -35,7 +35,7 @@
               </a>
 
               <div class="movie-meta">
-                <h3 class="movie-title">
+                <h3>
                   <a href="/movies/<%= movie.id %>"><%= movie.title %></a>
                 </h3>
                 <p class="movie-sub">

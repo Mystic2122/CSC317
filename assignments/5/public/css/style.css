@@ -108,7 +108,7 @@ header {
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: 150px;
-  gap: 15px;
+  gap: 150px;
 
   overflow-x: auto;          
   padding-bottom: 15px;  
@@ -145,17 +145,11 @@ header {
   align-items: center;
 }
 
-#movieBox {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-
+#movie-card {
   margin: 10px;
   border-radius: 21px;
-  background: linear-gradient(160deg, rgb(119, 0, 0), #3d0000);
-  width: 200px;
-  height: 300px;
-  overflow: hidden;
+  width: 75%;
+  height: auto;
 
   box-shadow: var(--shadow);
   transition: all 0.4s ease;
