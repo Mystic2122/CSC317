@@ -147,7 +147,7 @@ header {
   box-shadow: var(--shadow);
   transition: all 0.4s ease;
 }
-  
+
 #movie-card img {
   margin: 10px;
   width: 200px;
@@ -182,6 +182,15 @@ header {
 #movieTitle{
   font-size: 18px;
   text-decoration: none;
+}
+
+#movie-poster{
+  border-radius: 15px;
+}
+
+.review-form{
+  border: solid 1px var(--second-color);
+  border-radius: 15px;
 }
 
 /****************************************/

@@ -5,7 +5,7 @@
   <div class="container home-container">
 
     <!-- Featured Movie -->
-    <section class="section featured-section">
+    <section class="movie-section">
       <h1 class="search-bar">Search For Your Favorite Movies</h1>
       <form action="/search" method="GET">
               <input
@@ -18,17 +18,17 @@
       </section>
 
     <!-- Trending -->
-    <section class="section">
+    <section class="movie-section">
       <h2>Trending Now</h2>
       <p">Based on reviews from the last 7 days</p>
 
-      <div class="movie-grid">
+      <div class="movie-section">
         <% if (trendingMovies && trendingMovies.length) { %>
           <% trendingMovies.forEach(movie => { %>
             <article id="movie-card">
-              <a href="/movies/<%= movie.id %>" class="movie-poster-link">
+              <a href="/movies/<%= movie.id %>">
                 <% if (movie.image) { %>
-                  <img src="<%= movie.image %>" alt="<%= movie.title %> poster" class="movie-poster">
+                  <img src="<%= movie.image %>" alt="<%= movie.title %> poster" id="movie-poster">
                 <% } else { %>
                   <p>No Poster Found</p>
                 <% } %>
@@ -57,7 +57,7 @@
     </section>
 
     <!-- Popular -->
-    <section class="section">
+    <section class="movie-section">
       <h2 class="section-title">Popular Movies</h2>
       <p class="section-subtitle">Most reviewed movies of all time</p>
 
@@ -65,10 +65,10 @@
         <% if (popularMovies && popularMovies.length) { %>
           <% popularMovies.forEach(movie => { %>
             <article id="movie-card">
-              <a href="/movies/<%= movie.id %>" class="movie-poster-link">
+              <a href="/movies/<%= movie.id %>">
 
                 <% if (movie.image) { %>
-                  <img src="<%= movie.image %>" alt="<%= movie.title %> poster" class="movie-poster">
+                  <img src="<%= movie.image %>" alt="<%= movie.title %> poster" id="movie-poster">
                 <% } else { %>
                   <p>No Image</p>
                 <% } %>

@@ -3,16 +3,16 @@
   <main class="container home-container">
     <!-- Movie info -->
     <section class="section">
-      <article class="movie-card movie-card-featured">
-        <div class="movie-poster-link">
+      <article >
+        <div id="movie-poster">
           <% if (movie.image) { %>
-            <img src="<%= movie.image %>" alt="<%= movie.title %> poster" class="movie-poster featured-poster">
+            <img src="<%= movie.image %>" alt="<%= movie.title %> poster" id="movie-poster">
             <% } else { %>
-              <div class="movie-poster placeholder featured-poster">No Image</div>
+              <div class="movie-poster">No Image</div>
               <% } %>
         </div>
 
-        <div class="movie-meta featured-meta">
+        <div class="movie-meta">
           <h1 class="movie-title">
             <%= movie.title %>
           </h1>
@@ -55,20 +55,20 @@
             <% } %>
 
               <form action="/movies/<%= movie.id %>/review" method="POST" class="review-form">
-                <div class="review-form-group">
-                  <textarea id="reviewText" name="review" rows="4" placeholder="Write your thoughts about this movie..."
+                <div>
+                  <textarea name="review" rows="4" placeholder="Write your thoughts about this movie..."
                     minlength="10" maxlength="1000" required><%= userReview ? userReview.review : '' %></textarea>
-                  <div class="char-counter">
+                  <div>
                     <span id="charCount">0</span>/1000 characters
                   </div>
                 </div>
 
-                <div class="review-form-actions">
-                  <button type="submit" class="fetch-btn">
+                <div>
+                  <button type="submit">
                     <%= userReview ? 'Update Review' : 'Save Review' %>
                   </button>
                   <% if (userReview) { %>
-                    <button type="button" class="fetch-btn delete-btn" onclick="deleteReview(<%= movie.id %>)">
+                    <button type="button" onclick="deleteReview(<%= movie.id %>)">
                       Delete Review
                     </button>
                     <% } %>
