@@ -1,7 +1,7 @@
 ### Main Github
 - Github Username: Mystic2122
 - Github Repo: github.com/Mystic2122/CSC317/
-- Render Website Link: https://csc317-pvdi.onrender.com/home
+- Render Website Link: https://csc317-pvdi.onrender.com/
 
 ### Contributions
 
